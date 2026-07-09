@@ -1,9 +1,11 @@
 ---
 ---
-<section id="hero-section" class="min-h-screen flex flex-col xl:flex-row items-center justify-between relative perspective-[1500px] z-10 pt-20">
+<section id="hero-section" class="min-h-screen flex flex-col xl:flex-row items-center justify-between relative z-20 pt-24 pb-10">
     
-    <div class="w-full xl:w-1/2 flex flex-col justify-center text-left relative z-20">
+    <!-- BAGIAN KIRI: Teks & Terminal -->
+    <div class="w-full xl:w-1/2 flex flex-col justify-center text-left relative z-30">
         
+        <!-- Profile Badge -->
         <div class="hero-item mb-8 relative group w-max">
             <div class="absolute -inset-1 bg-linear-to-r from-violet-500 to-sky-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-200"></div>
             
@@ -24,46 +26,49 @@
             </div>
         </div>
         
-        <h1 class="hero-item scramble-text text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white mb-6 tracking-tighter leading-[0.9] text-glow-violet" data-target="Iqbal Marjan">
+        <!-- Main Heading -->
+        <h1 class="hero-item scramble-text text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white mb-6 tracking-tighter leading-[0.9] text-glow-violet drop-shadow-2xl" data-target="Iqbal Marjan">
             Iqbal Marjan
         </h1>
         
+        <!-- Subheading -->
         <h2 class="hero-item text-xl sm:text-3xl font-light text-zinc-400 mb-8 leading-relaxed border-l border-white/10 pl-6">
             <span class="font-bold text-white">Backend</span> adalah <span class="italic text-violet-400">Gaya Gravitasi.</span><br/>
             <span class="font-bold text-white">Frontend</span> adalah <span class="italic text-sky-400">Rasi Bintang.</span>
         </h2>
         
-        <!-- Live Cosmic Terminal (PENGGANTI KOTAK LAMA) -->
-        <div class="hero-item relative group mb-10 rounded-xl overflow-hidden border border-white/10 bg-[#02000a]/80 backdrop-blur-md p-6 max-w-lg shadow-[0_0_20px_rgba(14,165,233,0.1)] hover:border-sky-500/30 transition-all duration-500">
-            <!-- Dekorasi sudut ala sci-fi -->
+        <!-- Live Cosmic Terminal -->
+        <div class="hero-item relative group mb-10 rounded-xl overflow-hidden border border-white/10 bg-[#02000a]/90 backdrop-blur-md p-6 max-w-lg shadow-[0_0_20px_rgba(14,165,233,0.1)] hover:border-sky-500/30 transition-all duration-500">
             <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-sky-400 opacity-50"></div>
             <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-violet-400 opacity-50"></div>
 
-            <!-- Container Teks Typewriter -->
             <div id="terminal-container" class="font-mono text-[10px] sm:text-xs text-zinc-400 space-y-2 min-h-30">
-                <!-- Teks akan diketik otomatis oleh JavaScript di sini -->
+                <!-- Teks diketik via JS -->
             </div>
         </div>
 
     </div>
 
-    <div class="w-full xl:w-1/2 flex justify-center items-center mt-20 xl:mt-0 relative hero-item h-125">
+    <!-- BAGIAN KANAN: Visual Black Hole -->
+    <div class="w-full xl:w-1/2 flex justify-center items-center mt-20 xl:mt-0 relative hero-item min-h-75 lg:min-h-125">
         
-        <div class="absolute w-112.5 sm:w-150 h-112.5 sm:h-150 rounded-full border border-white/3 animate-spin-reverse flex items-center justify-center pointer-events-none">
-            <div class="absolute -top-3 bg-[#02000a] border border-sky-500/50 text-sky-400 text-[9px] px-3 py-1 rounded-full animate-spin-slow font-mono shadow-[0_0_10px_rgba(14,165,233,0.3)]">ASTRO.JS</div>
-            <div class="absolute -bottom-3 bg-[#02000a] border border-violet-500/50 text-violet-400 text-[9px] px-3 py-1 rounded-full animate-spin-slow font-mono shadow-[0_0_10px_rgba(139,92,246,0.3)]">GSAP_ENGINE</div>
-            <div class="absolute -left-3 bg-[#02000a] border border-emerald-500/50 text-emerald-400 text-[9px] px-3 py-1 rounded-full animate-spin-slow font-mono shadow-[0_0_10px_rgba(16,185,129,0.3)]">TAILWIND_CSS</div>
+        <!-- Lingkaran Luar (Tech Stack) -->
+        <div class="absolute w-75 h-75 sm:w-112.5 sm:h-112.5 rounded-full border border-white/10 animate-[spin_20s_linear_infinite_reverse] flex items-center justify-center pointer-events-none">
+            <div class="absolute -top-3 bg-[#02000a] border border-sky-500/50 text-sky-400 text-[9px] px-3 py-1 rounded-full font-mono">ASTRO.JS</div>
+            <div class="absolute -bottom-3 bg-[#02000a] border border-violet-500/50 text-violet-400 text-[9px] px-3 py-1 rounded-full font-mono">GSAP_ENGINE</div>
+            <div class="absolute -left-3 bg-[#02000a] border border-emerald-500/50 text-emerald-400 text-[9px] px-3 py-1 rounded-full font-mono">TAILWIND_CSS</div>
         </div>
 
-        <div class="absolute w-87.5 sm:w-125 h-87.5 sm:h-125 rounded-full border border-white/5 animate-spin-slow flex items-center justify-center">
+        <!-- Lingkaran Tengah -->
+        <div class="absolute w-55 h-55 sm:w-87.5 sm:h-87.5 rounded-full border border-white/5 animate-[spin_15s_linear_infinite] flex items-center justify-center">
             <span class="absolute -top-3 text-[10px] sm:text-xs font-mono text-violet-400 tracking-widest bg-[#02000a] px-3 border border-violet-500/30 rounded-full">STRUCTURAL LOGIC</span>
-            <span class="absolute -bottom-3 text-[10px] sm:text-xs font-mono text-sky-400 tracking-widest bg-[#02000a] px-3 border border-sky-500/30 rounded-full">VISUAL TYPOGRAPHY</span>
         </div>
 
-        <div class="absolute w-62.5 sm:w-87.5 h-62.5 sm:h-87.5 rounded-full border-2 border-t-violet-500 border-r-sky-400 border-b-transparent border-l-transparent animate-spin-reverse blur-[3px] shadow-[0_0_60px_rgba(139,92,246,0.4)]"></div>
-        <div class="absolute w-67.5 sm:w-95 h-67.5 sm:h-95 rounded-full border border-b-violet-400 border-l-sky-500 border-t-transparent border-r-transparent animate-spin-slow blur-[5px]"></div>
+        <!-- Efek Glow Orbit -->
+        <div class="absolute w-45 h-45 sm:w-70 sm:h-70 rounded-full border-2 border-t-violet-500 border-r-sky-400 border-b-transparent border-l-transparent animate-[spin_10s_linear_infinite_reverse] blur-[3px]"></div>
 
-        <div id="black-hole" class="relative w-37.5 sm:w-55 h-37.5 sm:h-55 rounded-full bg-black shadow-[0_0_50px_15px_rgba(0,0,0,1),inset_0_0_30px_rgba(139,92,246,0.6)] border border-white/5 z-10 flex items-center justify-center overflow-hidden cursor-crosshair">
+        <!-- Black Hole Inti -->
+        <div id="black-hole" class="relative w-3540px] sm:w-50 sm:h-50 rounded-full bg-black shadow-[0_0_50px_15px_rgba(0,0,0,1),inset_0_0_30px_rgba(139,92,246,0.6)] border border-white/5 z-10 flex items-center justify-center overflow-hidden cursor-crosshair">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,1)_80%)] animate-pulse"></div>
             <span class="font-mono text-[10px] text-zinc-600 tracking-[0.5em] z-20 mix-blend-screen">SINGULARITY</span>
         </div>
@@ -71,83 +76,83 @@
 </section>
 
 <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-        // 1. SCRAMBLE TEXT EFFECT
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
-        const scrambleElements = document.querySelectorAll('.scramble-text');
-        
-        scrambleElements.forEach(el => {
-            const target = el.getAttribute('data-target');
-            let iteration = 0;
-            const interval = setInterval(() => {
-                el.innerText = target.split("").map((letter, index) => {
-                    if(index < iteration) return target[index];
-                    return chars[Math.floor(Math.random() * chars.length)];
-                }).join("");
-                if(iteration >= target.length) clearInterval(interval);
-                iteration += 1 / 3; 
-            }, 30);
-        });
-
-        // 2. LIVE SYSTEM TERMINAL TYPEWRITER
-        const terminalContainer = document.getElementById('terminal-container');
-        
-        if (terminalContainer) {
-            const terminalLines = [
-                "> MENGAKSES_IJM.CORE...",
-                "> IDENTIFIKASI_ENTITAS: Iqbal Jabar Marjan",
-                "> SPESIALISASI: Arsitek Web & Pengendali Frontend",
-                "> TECH_STACK: Astro, Node.js, TailwindCSS <span class='text-emerald-400'>[TERDETEKSI]</span>",
-                "> STATUS_MISI: Menunggu Sinyal Tantangan Baru... <span class='text-sky-400 animate-pulse'>[ONLINE]</span>"
-            ];
+    // Membungkus semuanya dalam fungsi aman untuk menghindari bentrok
+    (function initHeroSection() {
+        document.addEventListener("DOMContentLoaded", () => {
             
-            let lineIndex = 0;
+            // 1. SCRAMBLE TEXT (Diberi pengaman if element ada)
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+            const scrambleElements = document.querySelectorAll('.scramble-text');
             
-            function typeLine() {
-                if (lineIndex < terminalLines.length) {
-                    const lineElement = document.createElement('div');
-                    lineElement.innerHTML = terminalLines[lineIndex];
-                    lineElement.style.opacity = '0';
-                    lineElement.style.transform = 'translateY(10px)';
-                    lineElement.style.transition = 'all 0.5s ease-out';
-                    
-                    terminalContainer.appendChild(lineElement);
-                    
-                    // Trigger reflow untuk animasi CSS
-                    setTimeout(() => {
-                        lineElement.style.opacity = '1';
-                        lineElement.style.transform = 'translateY(0)';
-                    }, 50);
+            scrambleElements.forEach(el => {
+                const target = el.getAttribute('data-target');
+                if (!target) return; // Fail-safe
+                
+                let iteration = 0;
+                const interval = setInterval(() => {
+                    el.innerText = target.split("").map((letter, index) => {
+                        if(index < iteration) return target[index];
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    }).join("");
+                    if(iteration >= target.length) clearInterval(interval);
+                    iteration += 1 / 3; 
+                }, 30);
+            });
 
-                    lineIndex++;
-                    // Jeda antar baris (800ms)
-                    setTimeout(typeLine, 800);
-                } else {
-                    // Tambahkan kursor berkedip di akhir
-                    const cursor = document.createElement('div');
-                    cursor.innerHTML = "> <span class='inline-block w-2 h-4 bg-white/70 animate-pulse align-middle'></span>";
-                    terminalContainer.appendChild(cursor);
+            // 2. TERMINAL TYPEWRITER (Diberi pengaman & penanganan error)
+            const terminalContainer = document.getElementById('terminal-container');
+            if (terminalContainer) {
+                const terminalLines = [
+                    "> MENGAKSES_IJM.CORE...",
+                    "> IDENTIFIKASI_ENTITAS: Iqbal Jabar Marjan",
+                    "> SPESIALISASI: Arsitek Web & Pengendali Frontend",
+                    "> TECH_STACK: Astro, Node.js, TailwindCSS <span class='text-emerald-400'>[TERDETEKSI]</span>",
+                    "> STATUS_MISI: Menunggu Sinyal Tantangan Baru... <span class='text-sky-400 animate-pulse'>[ONLINE]</span>"
+                ];
+                
+                let lineIndex = 0;
+                
+                function typeLine() {
+                    if (lineIndex < terminalLines.length) {
+                        const lineElement = document.createElement('div');
+                        lineElement.innerHTML = terminalLines[lineIndex];
+                        lineElement.style.opacity = '0';
+                        lineElement.style.transform = 'translateY(10px)';
+                        lineElement.style.transition = 'all 0.5s ease-out';
+                        
+                        terminalContainer.appendChild(lineElement);
+                        
+                        setTimeout(() => {
+                            lineElement.style.opacity = '1';
+                            lineElement.style.transform = 'translateY(0)';
+                        }, 50);
+
+                        lineIndex++;
+                        setTimeout(typeLine, 800);
+                    } else {
+                        const cursor = document.createElement('div');
+                        cursor.innerHTML = "> <span class='inline-block w-2 h-4 bg-white/70 animate-pulse align-middle'></span>";
+                        terminalContainer.appendChild(cursor);
+                    }
                 }
+                setTimeout(typeLine, 800);
             }
 
-            // Mulai animasi saat halaman dimuat
-            setTimeout(typeLine, 800);
-        }
+            // 3. BLACK HOLE HOVER (Pengecekan GSAP sebelum dieksekusi)
+            const heroSection = document.getElementById('hero-section');
+            const blackHole = document.getElementById('black-hole');
 
-        // 3. BLACK HOLE PARALLAX MOUSE EFFECT
-        const heroSection = document.getElementById('hero-section');
-        const blackHole = document.getElementById('black-hole');
-
-        if(heroSection && blackHole) {
-            heroSection.addEventListener('mousemove', (e) => {
-                const rect = heroSection.getBoundingClientRect();
-                const x = (e.clientX - rect.left - rect.width/2) * 0.08;
-                const y = (e.clientY - rect.top - rect.height/2) * 0.08;
-                gsap.to(blackHole, { x: x, y: y, duration: 0.6, ease: "power2.out" });
-            });
-            heroSection.addEventListener('mouseleave', () => {
-                gsap.to(blackHole, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
-            });
-        }
-    });
+            if(heroSection && blackHole && typeof window.gsap !== 'undefined') {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const x = (e.clientX - rect.left - rect.width/2) * 0.08;
+                    const y = (e.clientY - rect.top - rect.height/2) * 0.08;
+                    window.gsap.to(blackHole, { x: x, y: y, duration: 0.6, ease: "power2.out" });
+                });
+                heroSection.addEventListener('mouseleave', () => {
+                    window.gsap.to(blackHole, { x: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+                });
+            }
+        });
+    })();
 </script>
