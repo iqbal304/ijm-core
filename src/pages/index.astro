@@ -58,17 +58,16 @@ import MusicPlayer from '../components/MusicPlayer.astro';
     <Footer />
 </Layout>
 
-<script>
-    // Memberitahu TypeScript bahwa GSAP sudah diload dari CDN
-    declare const gsap: any;
-    declare const ScrollTrigger: any;
-
+<script is:inline>
+    // PERBAIKAN: Dibuat lebih aman dengan memanggil dari object window
     document.addEventListener("DOMContentLoaded", () => {
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Animasi masuk untuk Navbar dan Hero
-        const tl = gsap.timeline();
-        tl.from(".header-nav", { y: -30, opacity: 0, duration: 1, ease: "power2.out" })
-          .from(".hero-item", { y: 30, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out" }, "-=0.5"); 
+        if (typeof window.gsap !== 'undefined') {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+            
+            // Animasi masuk untuk Navbar dan Hero
+            const tl = window.gsap.timeline();
+            tl.from(".header-nav", { y: -30, opacity: 0, duration: 1, ease: "power2.out" })
+              .from(".hero-item", { y: 30, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out" }, "-=0.5"); 
+        }
     });
 </script>

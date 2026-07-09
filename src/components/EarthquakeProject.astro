@@ -4,7 +4,8 @@
 <div class="bg-white/5 border border-white/10 p-3 rounded-2xl backdrop-blur-md relative overflow-hidden group w-full h-full flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.5)]">
     
     <!-- HUD Overlay -->
-    <div class="absolute top-6 right-6 z-400g-[#02000a]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-mono text-sky-400 shadow-lg flex items-center gap-2">
+    <!-- PERBAIKAN: z-400g diubah menjadi z-40 bg- -->
+    <div class="absolute top-6 right-6 z-40 bg-[#02000a]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-mono text-sky-400 shadow-lg flex items-center gap-2">
         <span class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse"></span>
         SYS.MAP_ENGINE: ACTIVE
     </div>
@@ -13,7 +14,8 @@
     <canvas id="network-canvas" class="absolute inset-0 w-full h-full opacity-30 pointer-events-none z-0"></canvas>
 
     <!-- Kontainer Map Leaflet -->
-    <div id="earthquake-map" class="w-full h-70 lg:h-95 rounded-xl bg-[#02000a] z-10 grayscale-40 group-hover:grayscale-0 transition-all duration-1000 grow border border-white/5"></div>
+    <!-- PERBAIKAN: grayscale-40 menjadi grayscale-[40%] -->
+    <div id="earthquake-map" class="w-full h-70 lg:h-95 rounded-xl bg-[#02000a] z-10 grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 grow border border-white/5"></div>
 </div>
 
 <script>
@@ -25,8 +27,10 @@
     let particles: any[] = [];
     
     function initParticles() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+        if (!canvas) return;
+        // Pastikan dimensi valid
+        canvas.width = canvas.offsetWidth || 500;
+        canvas.height = canvas.offsetHeight || 300;
         particles = [];
         for (let i = 0; i < 40; i++) {
             particles.push({
@@ -39,9 +43,9 @@
     }
 
     function drawNetwork() {
-        if (!ctx) return;
+        if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'rgba(139, 92, 246, 0.3)'; // Warna violet
+        ctx.strokeStyle = 'rgba(139, 92, 246, 0.3)';
         ctx.lineWidth = 1;
 
         particles.forEach((p, i) => {
@@ -71,8 +75,11 @@
     if (typeof window !== 'undefined') {
         const mapElement = document.getElementById('earthquake-map');
         if (mapElement && !(mapElement as any)._leaflet_id) {
-            initParticles();
-            drawNetwork();
+            // Delay inisialisasi sedikit agar div selesai dirender sebelum canvas mengambil offsetWidth
+            setTimeout(() => {
+                initParticles();
+                drawNetwork();
+            }, 100);
 
             const map = L.map('earthquake-map', { zoomControl: false, attributionControl: false }).setView([0, 120], 3); 
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {}).addTo(map);
@@ -87,7 +94,8 @@
                             color: '#8b5cf6', fillColor: '#8b5cf6', fillOpacity: 0.5, weight: 1
                         }).addTo(map);
                     });
-                });
+                })
+                .catch(err => console.error("Gagal mengambil data USGS:", err));
         }
     }
 </script>
