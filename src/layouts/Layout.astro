@@ -1,0 +1,129 @@
+---
+import '../styles/global.css';
+interface Props { title: string; }
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" is:inline></script>
+</head>
+<body class="antialiased selection:bg-violet-500/30 relative">
+    
+    <!-- ENGINE 3D STARFIELD -->
+    <canvas id="starfield-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-60"></canvas>
+    
+    <!-- Kosmik Ambient Glow -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-violet-900/15 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+
+    <!-- KURSOR KOSMIK KUSTOM -->
+    <!-- 1. Inti Kursor (Dot) -->
+    <div id="cursor-dot" class="fixed top-0 left-0 w-1.5 h-1.5 bg-sky-400 rounded-full pointer-events-none z-9999hadow-[0_0_10px_#0ea5e9]"></div>
+    
+    <!-- 2. Cincin Kursor (Ring Radar) -->
+    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-violet-500/60 rounded-full pointer-events-none z-9998 flex items-center justify-center mix-blend-screen">
+        <!-- Garis Silang (Crosshair) -->
+        <div class="absolute w-full h-px bg-violet-500/30"></div>
+        <div class="absolute h-full w-px bg-violet-500/30"></div>
+    </div>
+
+    <slot />
+    
+    <script is:inline>
+        // SCRIPT KOMPLEKS: CANVAS 3D STAR WARS EFFECT
+        const canvas = document.getElementById('starfield-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+
+        function initStars() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            stars = [];
+            for (let i = 0; i < 400; i++) {
+                stars.push({ x: Math.random() * width - width / 2, y: Math.random() * height - height / 2, z: Math.random() * width, size: Math.random() * 1.5 });
+            }
+        }
+
+        function animateStars() {
+            ctx.fillStyle = '#02000a';
+            ctx.fillRect(0, 0, width, height);
+            const cx = width / 2; const cy = height / 2;
+
+            for (let star of stars) {
+                star.z -= 0.5; 
+                if (star.z <= 0) {
+                    star.z = width;
+                    star.x = Math.random() * width - cx;
+                    star.y = Math.random() * height - cy;
+                }
+                const k = 128.0 / star.z;
+                const px = star.x * k + cx;
+                const py = star.y * k + cy;
+
+                if (px >= 0 && px <= width && py >= 0 && py <= height) {
+                    const size = (1 - star.z / width) * 3;
+                    const opacity = 1 - star.z / width;
+                    ctx.beginPath();
+                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                    ctx.arc(px, py, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(animateStars);
+        }
+
+        window.addEventListener('resize', initStars);
+        initStars();
+        animateStars();
+        
+        // Register ScrollTrigger Global
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ==========================================
+        // SCRIPT KURSOR KOSMIK (GSAP)
+        // ==========================================
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+
+        // Menggerakkan kursor mengikuti mouse
+        window.addEventListener('mousemove', (e) => {
+            // Dot biru bergerak instan tanpa delay
+            gsap.to(dot, { x: e.clientX - 3, y: e.clientY - 3, duration: 0 });
+            
+            // Cincin ungu bergerak dengan sedikit delay (smooth parallax effect)
+            gsap.to(ring, { x: e.clientX - 16, y: e.clientY - 16, duration: 0.15, ease: "power2.out" });
+        });
+
+        // Menambahkan efek ketika kursor menyorot area yang bisa diklik
+        const addHoverEffect = () => {
+            // Cari semua elemen interaktif: Link, Button, Black Hole, dan Kartu Bento
+            const clickables = document.querySelectorAll('a, button, #black-hole, .group');
+            
+            clickables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    // Cincin membesar, berubah warna jadi biru, dan berputar 45 derajat
+                    gsap.to(ring, { scale: 1.5, borderColor: '#0ea5e9', rotation: 45, duration: 0.3 });
+                    // Dot biru ikut membesar
+                    gsap.to(dot, { scale: 2, backgroundColor: '#8b5cf6', duration: 0.3 });
+                });
+                el.addEventListener('mouseleave', () => {
+                    // Kembali ke bentuk semula
+                    gsap.to(ring, { scale: 1, borderColor: 'rgba(139, 92, 246, 0.6)', rotation: 0, duration: 0.3 });
+                    gsap.to(dot, { scale: 1, backgroundColor: '#0ea5e9', duration: 0.3 });
+                });
+            });
+        };
+        
+        // Panggil fungsi hover effect setelah semua elemen dirender
+        setTimeout(addHoverEffect, 1000); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+---
+---
+<!-- Komponen Kartu Peta Gempa dengan Jaringan Data -->
+<div class="bg-white/5 border border-white/10 p-3 rounded-2xl backdrop-blur-md relative overflow-hidden group w-full h-full flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+    
+    <!-- HUD Overlay -->
+    <div class="absolute top-6 right-6 z-400g-[#02000a]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-mono text-sky-400 shadow-lg flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse"></span>
+        SYS.MAP_ENGINE: ACTIVE
+    </div>
+    
+    <!-- Canvas untuk Jaringan Data (Star Connection) -->
+    <canvas id="network-canvas" class="absolute inset-0 w-full h-full opacity-30 pointer-events-none z-0"></canvas>
+
+    <!-- Kontainer Map Leaflet -->
+    <div id="earthquake-map" class="w-full h-70 lg:h-95 rounded-xl bg-[#02000a] z-10 grayscale-40 group-hover:grayscale-0 transition-all duration-1000 grow border border-white/5"></div>
+</div>
+
+<script>
+    import L from 'leaflet';
+    
+    // --- 1. JARINGAN DATA CANVAS (Star-Connection Network) ---
+    const canvas = document.getElementById('network-canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+    let particles: any[] = [];
+    
+    function initParticles() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        particles = [];
+        for (let i = 0; i < 40; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+    }
+
+    function drawNetwork() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = 'rgba(139, 92, 246, 0.3)'; // Warna violet
+        ctx.lineWidth = 1;
+
+        particles.forEach((p, i) => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+            ctx.fillStyle = '#8b5cf6';
+            ctx.fill();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const dist = Math.hypot(p.x - particles[j].x, p.y - particles[j].y);
+                if (dist < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        });
+        requestAnimationFrame(drawNetwork);
+    }
+
+    // --- 2. LEAFLET MAP ---
+    if (typeof window !== 'undefined') {
+        const mapElement = document.getElementById('earthquake-map');
+        if (mapElement && !(mapElement as any)._leaflet_id) {
+            initParticles();
+            drawNetwork();
+
+            const map = L.map('earthquake-map', { zoomControl: false, attributionControl: false }).setView([0, 120], 3); 
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {}).addTo(map);
+
+            fetch('https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=20&minmagnitude=4.5')
+                .then(res => res.json())
+                .then(data => {
+                    data.features.forEach((q: any) => {
+                        const coords = [q.geometry.coordinates[1], q.geometry.coordinates[0]];
+                        L.circle(coords as [number, number], {
+                            radius: q.properties.mag * 20000, 
+                            color: '#8b5cf6', fillColor: '#8b5cf6', fillOpacity: 0.5, weight: 1
+                        }).addTo(map);
+                    });
+                });
+        }
+    }
+</script>
