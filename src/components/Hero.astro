@@ -33,10 +33,16 @@
             <span class="font-bold text-white">Frontend</span> adalah <span class="italic text-sky-400">Rasi Bintang.</span>
         </h2>
         
-        <div class="hero-item mb-10 bg-[#02000a]/60 border border-white/5 rounded-lg p-3 w-full max-w-lg font-mono text-[9px] sm:text-[10px] text-zinc-500 h-24 overflow-hidden relative shadow-[inset_0_0_10px_rgba(255,255,255,0.02)]">
-            <div class="absolute top-0 left-0 w-full h-0.5 bg-linear-to-r from-violet-500/50 to-sky-500/50"></div>
-            <div id="boot-log" class="flex flex-col gap-1 tracking-wider leading-relaxed">
-                </div>
+        <!-- Live Cosmic Terminal (PENGGANTI KOTAK LAMA) -->
+        <div class="hero-item relative group mb-10 rounded-xl overflow-hidden border border-white/10 bg-[#02000a]/80 backdrop-blur-md p-6 max-w-lg shadow-[0_0_20px_rgba(14,165,233,0.1)] hover:border-sky-500/30 transition-all duration-500">
+            <!-- Dekorasi sudut ala sci-fi -->
+            <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-sky-400 opacity-50"></div>
+            <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-violet-400 opacity-50"></div>
+
+            <!-- Container Teks Typewriter -->
+            <div id="terminal-container" class="font-mono text-[10px] sm:text-xs text-zinc-400 space-y-2 min-h-30">
+                <!-- Teks akan diketik otomatis oleh JavaScript di sini -->
+            </div>
         </div>
 
     </div>
@@ -83,29 +89,49 @@
             }, 30);
         });
 
-        // 2. TERMINAL BOOT SEQUENCE LOGS
-        const logContainer = document.getElementById('boot-log');
-        const logs = [
-            "> INISIALISASI MESIN KOSMIK...",
-            "> MEMUAT MODUL BACKEND (NODE.JS, API)... [OK]",
-            "> MENYUSUN RASI BINTANG FRONTEND... [OK]",
-            "> MENSTABILKAN GRAVITASI SINGULARITAS...",
-            "> KAPTEN IQBAL JABAR MARJAN: STATUS ONLINE."
-        ];
+        // 2. LIVE SYSTEM TERMINAL TYPEWRITER
+        const terminalContainer = document.getElementById('terminal-container');
         
-        if (logContainer) {
-            let logIndex = 0;
-            const logInterval = setInterval(() => {
-                if (logIndex < logs.length) {
-                    const p = document.createElement('p');
-                    p.innerHTML = logs[logIndex].replace('[OK]', '<span class="text-emerald-400">[OK]</span>');
-                    logContainer.appendChild(p);
-                    logContainer.scrollTop = logContainer.scrollHeight; // Auto scroll ke bawah
-                    logIndex++;
+        if (terminalContainer) {
+            const terminalLines = [
+                "> MENGAKSES_IJM.CORE...",
+                "> IDENTIFIKASI_ENTITAS: Iqbal Jabar Marjan",
+                "> SPESIALISASI: Arsitek Web & Pengendali Frontend",
+                "> TECH_STACK: Astro, Node.js, TailwindCSS <span class='text-emerald-400'>[TERDETEKSI]</span>",
+                "> STATUS_MISI: Menunggu Sinyal Tantangan Baru... <span class='text-sky-400 animate-pulse'>[ONLINE]</span>"
+            ];
+            
+            let lineIndex = 0;
+            
+            function typeLine() {
+                if (lineIndex < terminalLines.length) {
+                    const lineElement = document.createElement('div');
+                    lineElement.innerHTML = terminalLines[lineIndex];
+                    lineElement.style.opacity = '0';
+                    lineElement.style.transform = 'translateY(10px)';
+                    lineElement.style.transition = 'all 0.5s ease-out';
+                    
+                    terminalContainer.appendChild(lineElement);
+                    
+                    // Trigger reflow untuk animasi CSS
+                    setTimeout(() => {
+                        lineElement.style.opacity = '1';
+                        lineElement.style.transform = 'translateY(0)';
+                    }, 50);
+
+                    lineIndex++;
+                    // Jeda antar baris (800ms)
+                    setTimeout(typeLine, 800);
                 } else {
-                    clearInterval(logInterval);
+                    // Tambahkan kursor berkedip di akhir
+                    const cursor = document.createElement('div');
+                    cursor.innerHTML = "> <span class='inline-block w-2 h-4 bg-white/70 animate-pulse align-middle'></span>";
+                    terminalContainer.appendChild(cursor);
                 }
-            }, 800); // Muncul tiap 0.8 detik
+            }
+
+            // Mulai animasi saat halaman dimuat
+            setTimeout(typeLine, 800);
         }
 
         // 3. BLACK HOLE PARALLAX MOUSE EFFECT
