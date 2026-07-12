@@ -1,43 +1,40 @@
 ---
 ---
-<!-- Komponen Kartu Peta Gempa dengan Jaringan Data -->
-<div class="bg-white/5 border border-white/10 p-3 rounded-2xl backdrop-blur-md relative overflow-hidden group w-full h-full flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+<!-- Komponen Monitor Resonansi Aether (Peta Gempa) -->
+<div class="bg-[#0a1118]/80 border border-emerald-500/20 p-3.5 rounded-2xl backdrop-blur-md relative overflow-hidden group w-full h-full flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.6)] hover:border-cyan-500/40 transition-colors duration-500">
     
-    <!-- HUD Overlay -->
-    <!-- PERBAIKAN: z-400g diubah menjadi z-40 bg- -->
-    <div class="absolute top-6 right-6 z-40 bg-[#02000a]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-[9px] font-mono text-sky-400 shadow-lg flex items-center gap-2">
-        <span class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse"></span>
-        SYS.MAP_ENGINE: ACTIVE
+    <!-- HUD Overlay Laputa -->
+    <div class="absolute top-6 right-6 z-40 bg-[#070b12]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-emerald-500/30 text-[9px] font-mono text-cyan-300 shadow-lg flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+        SYS.AETHER_RESONANCE: ACTIVE
     </div>
     
-    <!-- Canvas untuk Jaringan Data (Star Connection) -->
-    <canvas id="network-canvas" class="absolute inset-0 w-full h-full opacity-30 pointer-events-none z-0"></canvas>
+    <!-- Canvas untuk Jaringan Akar & Energi (Aether Roots) -->
+    <canvas id="network-canvas" class="absolute inset-0 w-full h-full opacity-35 pointer-events-none z-0"></canvas>
 
     <!-- Kontainer Map Leaflet -->
-    <!-- PERBAIKAN: grayscale-40 menjadi grayscale-[40%] -->
-    <div id="earthquake-map" class="w-full h-70 lg:h-95 rounded-xl bg-[#02000a] z-10 grayscale-[40%] group-hover:grayscale-0 transition-all duration-1000 grow border border-white/5"></div>
+    <div id="earthquake-map" class="w-full h-70 lg:h-95 rounded-xl bg-[#070b12] z-10 grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 grow border border-emerald-500/15"></div>
 </div>
 
 <script>
     import L from 'leaflet';
     
-    // --- 1. JARINGAN DATA CANVAS (Star-Connection Network) ---
+    // --- 1. JARINGAN AKAR AETHER (Nature Network Canvas) ---
     const canvas = document.getElementById('network-canvas') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas?.getContext('2d');
     let particles: any[] = [];
     
     function initParticles() {
         if (!canvas) return;
-        // Pastikan dimensi valid
         canvas.width = canvas.offsetWidth || 500;
         canvas.height = canvas.offsetHeight || 300;
         particles = [];
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 35; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4
             });
         }
     }
@@ -45,7 +42,7 @@
     function drawNetwork() {
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'rgba(139, 92, 246, 0.3)';
+        ctx.strokeStyle = 'rgba(16, 185, 129, 0.25)'; // Warna hijau lumut
         ctx.lineWidth = 1;
 
         particles.forEach((p, i) => {
@@ -55,12 +52,12 @@
 
             ctx.beginPath();
             ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-            ctx.fillStyle = '#8b5cf6';
+            ctx.fillStyle = '#06b6d4'; // Warna cyan kristal
             ctx.fill();
 
             for (let j = i + 1; j < particles.length; j++) {
                 const dist = Math.hypot(p.x - particles[j].x, p.y - particles[j].y);
-                if (dist < 100) {
+                if (dist < 110) {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(particles[j].x, particles[j].y);
@@ -71,11 +68,10 @@
         requestAnimationFrame(drawNetwork);
     }
 
-    // --- 2. LEAFLET MAP ---
+    // --- 2. LEAFLET MAP DENGAN TEMA KRISTAL ---
     if (typeof window !== 'undefined') {
         const mapElement = document.getElementById('earthquake-map');
         if (mapElement && !(mapElement as any)._leaflet_id) {
-            // Delay inisialisasi sedikit agar div selesai dirender sebelum canvas mengambil offsetWidth
             setTimeout(() => {
                 initParticles();
                 drawNetwork();
@@ -89,9 +85,13 @@
                 .then(data => {
                     data.features.forEach((q: any) => {
                         const coords = [q.geometry.coordinates[1], q.geometry.coordinates[0]];
+                        // Lingkaran diganti menjadi Cyan & Emerald ala energi Levitas
                         L.circle(coords as [number, number], {
                             radius: q.properties.mag * 20000, 
-                            color: '#8b5cf6', fillColor: '#8b5cf6', fillOpacity: 0.5, weight: 1
+                            color: '#06b6d4', 
+                            fillColor: '#10b981', 
+                            fillOpacity: 0.45, 
+                            weight: 1.5
                         }).addTo(map);
                     });
                 })

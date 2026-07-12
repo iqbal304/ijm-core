@@ -9,109 +9,83 @@ const { title } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" is:inline></script>
     
     <style>
-        /* Sembunyikan kursor kustom di HP */
         @media (pointer: coarse) {
             #cursor-dot, #cursor-ring { display: none !important; }
             body { cursor: auto !important; }
         }
-
-        /* FITUR A: Animasi Hujan Meteor (Shooting Stars) */
-        .shooting-star {
-            position: absolute;
-            width: 120px;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(14,165,233,0.8) 0%, transparent 100%);
-            border-radius: 999px;
-            transform: rotate(-45deg) translateX(200%);
-            opacity: 0;
-            box-shadow: 0 0 10px rgba(14,165,233,0.5);
-        }
-        @keyframes shoot {
-            0% { transform: rotate(-45deg) translateX(300px); opacity: 1; }
-            70% { opacity: 1; }
-            100% { transform: rotate(-45deg) translateX(-150vw); opacity: 0; }
-        }
-        .animate-shoot { animation: shoot 7s linear infinite; }
-        .delay-100 { animation-delay: 2s; }
-        .delay-400 { animation-delay: 5s; }
-        .delay-700 { animation-delay: 9s; }
     </style>
 </head>
-<body class="antialiased selection:bg-violet-500/30 relative overflow-x-hidden">
+<body class="antialiased selection:bg-cyan-500/30 relative overflow-x-hidden">
     
-    <canvas id="starfield-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-60"></canvas>
+    <!-- ENGINE PARTIKEL AETHER (Laputa Floating Magic) -->
+    <canvas id="aether-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-70"></canvas>
     
-    <div class="fixed inset-0 pointer-events-none -z-25 overflow-hidden">
-        <div class="shooting-star top-[10%] left-[30%] animate-shoot delay-100"></div>
-        <div class="shooting-star top-[40%] left-[80%] animate-shoot delay-400"></div>
-        <div class="shooting-star top-[70%] left-[50%] animate-shoot delay-700"></div>
-    </div>
+    <!-- Laputa Ambient Glow (Cyan & Moss Green) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-cyan-900/15 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-emerald-900/15 blur-[130px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
 
-    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-violet-900/15 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-sky-900/10 blur-[120px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
-
-    <div id="cursor-dot" class="fixed top-0 left-0 w-1.5 h-1.5 bg-sky-400 rounded-full pointer-events-none z-[9999] shadow-[0_0_10px_#0ea5e9]"></div>
+    <!-- KURSOR KRISTAL LEVITAS -->
+    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 bg-cyan-300 rounded-full pointer-events-none z-[9999] shadow-[0_0_12px_#06b6d4]"></div>
     
-    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-violet-500/60 rounded-full pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen">
-        <div class="absolute w-full h-px bg-violet-500/30"></div>
-        <div class="absolute h-full w-px bg-violet-500/30"></div>
+    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-emerald-500/50 rounded-full pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen">
+        <div class="absolute w-1.5 h-1.5 bg-amber-400/60 rounded-full animate-ping"></div>
     </div>
 
     <slot />
     
     <script is:inline>
-        // SCRIPT CANVAS 3D STAR WARS EFFECT
-        const canvas = document.getElementById('starfield-canvas');
+        // SCRIPT KANVAS: PARTIKEL AETHER MELAYANG KE ATAS
+        const canvas = document.getElementById('aether-canvas');
         const ctx = canvas.getContext('2d');
-        let width, height, stars = [];
+        let width, height, motes = [];
 
-        function initStars() {
+        function initMotes() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            stars = [];
-            for (let i = 0; i < 400; i++) {
-                stars.push({ x: Math.random() * width - width / 2, y: Math.random() * height - height / 2, z: Math.random() * width, size: Math.random() * 1.5 });
+            motes = [];
+            for (let i = 0; i < 80; i++) {
+                motes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 2.5 + 0.5,
+                    speedY: Math.random() * 0.6 + 0.2,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.7 + 0.2,
+                    color: Math.random() > 0.3 ? '#06b6d4' : (Math.random() > 0.5 ? '#10b981' : '#f59e0b')
+                });
             }
         }
 
-        function animateStars() {
-            ctx.fillStyle = '#02000a';
-            ctx.fillRect(0, 0, width, height);
-            const cx = width / 2; const cy = height / 2;
+        function animateMotes() {
+            ctx.clearRect(0, 0, width, height);
+            for (let m of motes) {
+                m.y -= m.speedY;
+                m.x += m.speedX;
+                if (m.y < 0) { m.y = height; m.x = Math.random() * width; }
+                if (m.x < 0) m.x = width;
+                if (m.x > width) m.x = 0;
 
-            for (let star of stars) {
-                star.z -= 0.5; 
-                if (star.z <= 0) {
-                    star.z = width;
-                    star.x = Math.random() * width - cx;
-                    star.y = Math.random() * height - cy;
-                }
-                const k = 128.0 / star.z;
-                const px = star.x * k + cx;
-                const py = star.y * k + cy;
-
-                if (px >= 0 && px <= width && py >= 0 && py <= height) {
-                    const size = (1 - star.z / width) * 3;
-                    const opacity = 1 - star.z / width;
-                    ctx.beginPath();
-                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-                    ctx.arc(px, py, size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+                ctx.beginPath();
+                ctx.fillStyle = m.color;
+                ctx.globalAlpha = m.opacity;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = m.color;
+                ctx.arc(m.x, m.y, m.size, 0, Math.PI * 2);
+                ctx.fill();
             }
-            requestAnimationFrame(animateStars);
+            requestAnimationFrame(animateMotes);
         }
 
-        window.addEventListener('resize', initStars);
-        initStars();
-        animateStars();
+        window.addEventListener('resize', initMotes);
+        initMotes();
+        animateMotes();
         
         if (typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
@@ -120,34 +94,26 @@ const { title } = Astro.props;
             const ring = document.getElementById('cursor-ring');
 
             window.addEventListener('mousemove', (e) => {
-                gsap.to(dot, { x: e.clientX - 3, y: e.clientY - 3, duration: 0 });
-                gsap.to(ring, { x: e.clientX - 16, y: e.clientY - 16, duration: 0.15, ease: "power2.out" });
+                gsap.to(dot, { x: e.clientX - 4, y: e.clientY - 4, duration: 0 });
+                gsap.to(ring, { x: e.clientX - 16, y: e.clientY - 16, duration: 0.2, ease: "power2.out" });
             });
 
-            // FITUR B: Inisialisasi Suara Hover (Sci-Fi Beep)
-            const hoverSound = new Howl({
-                src: ['/hover.mp3'], // Pastikan file hover.mp3 ada di folder public!
-                volume: 0.15 // Volume dibuat halus agar tidak berisik
-            });
+            const hoverSound = new Howl({ src: ['/hover.mp3'], volume: 0.15 });
 
             const addHoverEffect = () => {
-                const clickables = document.querySelectorAll('a, button, #black-hole, .group');
-                
+                const clickables = document.querySelectorAll('a, button, #crystal-core, .group');
                 clickables.forEach(el => {
                     el.addEventListener('mouseenter', () => {
-                        // Mainkan suara saat disorot kursor
-                        hoverSound.play(); 
-
-                        gsap.to(ring, { scale: 1.5, borderColor: '#0ea5e9', rotation: 45, duration: 0.3 });
-                        gsap.to(dot, { scale: 2, backgroundColor: '#8b5cf6', duration: 0.3 });
+                        if(hoverSound.state() === 'loaded') hoverSound.play(); 
+                        gsap.to(ring, { scale: 1.6, borderColor: '#06b6d4', backgroundColor: 'rgba(6, 182, 212, 0.1)', duration: 0.3 });
+                        gsap.to(dot, { scale: 1.5, backgroundColor: '#f59e0b', duration: 0.3 });
                     });
                     el.addEventListener('mouseleave', () => {
-                        gsap.to(ring, { scale: 1, borderColor: 'rgba(139, 92, 246, 0.6)', rotation: 0, duration: 0.3 });
-                        gsap.to(dot, { scale: 1, backgroundColor: '#0ea5e9', duration: 0.3 });
+                        gsap.to(ring, { scale: 1, borderColor: 'rgba(16, 185, 129, 0.5)', backgroundColor: 'transparent', duration: 0.3 });
+                        gsap.to(dot, { scale: 1, backgroundColor: '#67e8f9', duration: 0.3 });
                     });
                 });
             };
-            
             setTimeout(addHoverEffect, 1000); 
         }
     </script>

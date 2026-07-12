@@ -4,39 +4,46 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Galeri | Spektrum Visual">
+<Layout title="Arsip Istana Langit | Galeri Laputa">
     <Navbar />
 
     <main class="max-w-7xl mx-auto px-6 pt-24 pb-20 min-h-screen">
         
         <div class="mb-16 reveal-scroll">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tighter mb-4 text-glow-sky">
-                SPEKTRUM_VISUAL.
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tighter mb-4 text-glow-cyan">
+                ARSISTUR_&_MEMORI.
             </h1>
-            <p class="text-zinc-400 font-mono text-sm border-l-2 border-sky-500 pl-4">
-                > Arsip memori dan karya visual yang tertangkap di luar angkasa.
+            <p class="text-zinc-300 font-mono text-sm border-l-2 border-emerald-500 pl-4">
+                > Serpihan memori, jejak kode, dan estetika peradaban yang tertinggal di atas awan.
             </p>
         </div>
 
         <div class="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6 reveal-scroll">
             
-            <div class="relative group rounded-2xl overflow-hidden border border-white/10 bg-white/5 break-inside-avoid">
-                <div class="absolute inset-0 bg-violet-500/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-500"></div>
-                <img src="/foto-iqbal.jpg" alt="Gallery Image 1" class="w-full h-auto grayscale-50 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
-                <div class="absolute bottom-0 left-0 w-full p-4 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                    <p class="font-mono text-[10px] text-sky-400 tracking-widest">LOG_001</p>
-                    <p class="text-white text-sm font-medium">Di balik layar</p>
+            <!-- Kartu 1: Foto Profil -->
+            <div class="relative group rounded-2xl overflow-hidden border border-emerald-500/20 bg-[#0a1118]/60 break-inside-avoid shadow-lg">
+                <div class="absolute inset-0 bg-gradient-to-t from-cyan-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-500"></div>
+                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-full h-auto grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+                <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#070b12] via-[#070b12]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                    <p class="font-mono text-[10px] text-cyan-400 tracking-widest">PRASASTI_001</p>
+                    <p class="text-white text-sm font-medium">Sang Arsitek di Balik Layar</p>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 p-8 flex items-center justify-center min-h-75 break-inside-avoid hover:border-violet-500/50 transition-colors">
-                <p class="font-serif italic text-xl text-zinc-300 text-center leading-relaxed">
-                    "Terkadang, <span class="text-sky-400">desain terbaik</span> adalah desain yang tidak terlihat."
+            <!-- Kartu 2: Kutipan Filosofis Ghibli (Laputa Quote) -->
+            <div class="relative group rounded-2xl overflow-hidden border border-emerald-500/30 bg-[#0a1118] p-8 flex flex-col items-center justify-center min-h-75 break-inside-avoid hover:border-cyan-400/60 transition-colors shadow-[inset_0_0_20px_rgba(16,185,129,0.05)]">
+                <div class="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-6 text-emerald-400 font-serif">"</div>
+                <p class="font-serif italic text-lg md:text-xl text-zinc-200 text-center leading-relaxed">
+                    "Sebanyak apapun kode yang kau tulis, atau secerdas apapun <span class="text-cyan-400 font-semibold">logika sistemmu</span>, kita tidak bisa bertahan tanpa terhubung dengan <span class="text-emerald-400 font-semibold">keindahan alam</span>."
                 </p>
+                <span class="text-[9px] font-mono text-zinc-500 tracking-widest uppercase mt-6">— Adaptasi Filosofi Laputa</span>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden border border-white/10 bg-white/5 break-inside-avoid min-h-62.5 flex items-center justify-center">
-                <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-widest animate-pulse">Awaiting Data...</p>
+            <!-- Kartu 3: Placeholder Data Kuno -->
+            <div class="relative group rounded-2xl overflow-hidden border border-emerald-500/15 bg-[#0a1118]/40 break-inside-avoid min-h-62.5 flex flex-col items-center justify-center p-6 border-dashed hover:border-emerald-500/40 transition-all">
+                <div class="w-3 h-3 bg-amber-400/40 rounded-full animate-ping mb-3"></div>
+                <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest text-center">Menunggu Transmisi Memori Baru...</p>
+                <span class="text-[8px] font-mono text-zinc-600 mt-1">[SLOT_KARYA_TERSEDIA]</span>
             </div>
 
         </div>
@@ -46,15 +53,13 @@ import Footer from '../components/Footer.astro';
     <Footer />
 </Layout>
 
-<script>
-    declare const gsap: any;
-    declare const ScrollTrigger: any;
-
+<script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
-        gsap.registerPlugin(ScrollTrigger);
-        // Memastikan animasi hanya jalan jika elemen ada
-        gsap.from(".reveal-scroll", {
-            y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
-        });
+        if (typeof window.gsap !== 'undefined') {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+            window.gsap.from(".reveal-scroll", {
+                y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+            });
+        }
     });
 </script>
