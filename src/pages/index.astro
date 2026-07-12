@@ -71,4 +71,75 @@ import MusicPlayer from '../components/MusicPlayer.astro';
               .from(".hero-item", { y: 30, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out" }, "-=0.5"); 
         }
     });
+</script>---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+import EarthquakeProject from '../components/EarthquakeProject.astro';
+import MusicPlayer from '../components/MusicPlayer.astro';
+---
+
+<Layout title="The Algorithmic Heritage - IJM.CORE">
+    <Navbar />
+    
+    <MusicPlayer />
+
+    <main class="max-w-7xl mx-auto px-6 overflow-hidden">
+        
+        <Hero />
+
+        <!-- Seksi Observatorium Al-Idrisi -->
+        <section id="observatory" class="py-20 reveal-scroll mt-20 relative z-10 border-t border-amber-500/15">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="text-amber-400 font-mono text-lg font-bold">01.</span>
+                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-tighter drop-shadow-[0_0_10px_rgba(245,158,11,0.3)]">Kartografi Tektonik Al-Idrisi</h2>
+                <div class="h-px bg-gradient-to-r from-amber-500/30 to-transparent grow max-w-sm ml-4 hidden sm:block"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <div class="lg:col-span-1 flex flex-col gap-6">
+                    <div class="bg-[#080d1a]/80 border border-amber-500/20 p-6 xl:p-8 rounded-2xl backdrop-blur-md h-full flex flex-col justify-between shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                        <div>
+                            <div class="text-[9px] font-mono text-teal-300 tracking-[0.2em] mb-4 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-ping"></span>
+                                TELEMETRI_GLOBAL_AKTIF
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Integrasi API Seismik</h3>
+                            <p class="text-xs md:text-sm text-zinc-300 font-light leading-relaxed mb-6">
+                                Menggabungkan semangat pemetaan presisi kuno dengan teknologi modern. Skrip ini menarik data seismik USGS secara langsung, memproses persamaan koordinat, dan merendernya ke peta geometri interaktif.
+                            </p>
+                        </div>
+                        
+                        <div class="font-mono text-[10px] md:text-xs text-zinc-400 bg-[#060913] p-3.5 md:p-4 rounded-xl border border-amber-500/20 overflow-x-auto shadow-inner">
+                            <span class="text-amber-400">fetch</span>('https://earthquake.../geojson')<br/>
+                            &nbsp;&nbsp;.then(res => res.<span class="text-teal-400">json</span>())<br/>
+                            &nbsp;&nbsp;.then(data => renderAlIdrisiMap(data));
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 relative">
+                    <EarthquakeProject />
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <Footer />
+</Layout>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof window.gsap !== 'undefined') {
+            window.gsap.registerPlugin(window.ScrollTrigger);
+            
+            const tl = window.gsap.timeline();
+            tl.from(".header-nav", { y: -30, opacity: 0, duration: 1, ease: "power2.out" })
+              .from(".hero-item", { y: 30, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out" }, "-=0.5"); 
+        }
+    });
 </script>

@@ -9,7 +9,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -22,27 +22,27 @@ const { title } = Astro.props;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-500/30 relative overflow-x-hidden">
+<body class="antialiased selection:bg-amber-500/30 relative overflow-x-hidden">
     
-    <!-- ENGINE PARTIKEL AETHER (Laputa Floating Magic) -->
-    <canvas id="aether-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-70"></canvas>
+    <!-- ENGINE PARTIKEL DEBU EMAS & RASI GEOMETRI -->
+    <canvas id="golden-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-70"></canvas>
     
-    <!-- Laputa Ambient Glow (Cyan & Moss Green) -->
-    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-cyan-900/15 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-emerald-900/15 blur-[130px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+    <!-- Ambient Glow (Sacred Gold & Persian Teal) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-amber-600/10 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-teal-900/15 blur-[130px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
 
-    <!-- KURSOR KRISTAL LEVITAS -->
-    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 bg-cyan-300 rounded-full pointer-events-none z-[9999] shadow-[0_0_12px_#06b6d4]"></div>
+    <!-- KURSOR GEOMETRI SUCI -->
+    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 bg-amber-400 rounded-full pointer-events-none z-[9999] shadow-[0_0_12px_#f59e0b]"></div>
     
-    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-emerald-500/50 rounded-full pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen">
-        <div class="absolute w-1.5 h-1.5 bg-amber-400/60 rounded-full animate-ping"></div>
+    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-teal-500/50 rounded-full pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen">
+        <div class="absolute w-1.5 h-1.5 bg-teal-300/60 rounded-full animate-ping"></div>
     </div>
 
     <slot />
     
     <script is:inline>
-        // SCRIPT KANVAS: PARTIKEL AETHER MELAYANG KE ATAS
-        const canvas = document.getElementById('aether-canvas');
+        // SCRIPT KANVAS: DEBU EMAS ALGORITHMIC
+        const canvas = document.getElementById('golden-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, motes = [];
 
@@ -50,15 +50,15 @@ const { title } = Astro.props;
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             motes = [];
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 70; i++) {
                 motes.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    size: Math.random() * 2.5 + 0.5,
-                    speedY: Math.random() * 0.6 + 0.2,
-                    speedX: (Math.random() - 0.5) * 0.3,
-                    opacity: Math.random() * 0.7 + 0.2,
-                    color: Math.random() > 0.3 ? '#06b6d4' : (Math.random() > 0.5 ? '#10b981' : '#f59e0b')
+                    size: Math.random() * 2 + 0.5,
+                    speedY: Math.random() * 0.4 + 0.1,
+                    speedX: (Math.random() - 0.5) * 0.2,
+                    opacity: Math.random() * 0.6 + 0.2,
+                    color: Math.random() > 0.4 ? '#f59e0b' : (Math.random() > 0.5 ? '#14b8a6' : '#fef3c7')
                 });
             }
         }
@@ -75,7 +75,7 @@ const { title } = Astro.props;
                 ctx.beginPath();
                 ctx.fillStyle = m.color;
                 ctx.globalAlpha = m.opacity;
-                ctx.shadowBlur = 8;
+                ctx.shadowBlur = 6;
                 ctx.shadowColor = m.color;
                 ctx.arc(m.x, m.y, m.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -101,16 +101,16 @@ const { title } = Astro.props;
             const hoverSound = new Howl({ src: ['/hover.mp3'], volume: 0.15 });
 
             const addHoverEffect = () => {
-                const clickables = document.querySelectorAll('a, button, #crystal-core, .group');
+                const clickables = document.querySelectorAll('a, button, #astrolabe-core, .group');
                 clickables.forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         if(hoverSound.state() === 'loaded') hoverSound.play(); 
-                        gsap.to(ring, { scale: 1.6, borderColor: '#06b6d4', backgroundColor: 'rgba(6, 182, 212, 0.1)', duration: 0.3 });
-                        gsap.to(dot, { scale: 1.5, backgroundColor: '#f59e0b', duration: 0.3 });
+                        gsap.to(ring, { scale: 1.6, borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', duration: 0.3 });
+                        gsap.to(dot, { scale: 1.5, backgroundColor: '#14b8a6', duration: 0.3 });
                     });
                     el.addEventListener('mouseleave', () => {
-                        gsap.to(ring, { scale: 1, borderColor: 'rgba(16, 185, 129, 0.5)', backgroundColor: 'transparent', duration: 0.3 });
-                        gsap.to(dot, { scale: 1, backgroundColor: '#67e8f9', duration: 0.3 });
+                        gsap.to(ring, { scale: 1, borderColor: 'rgba(20, 184, 166, 0.5)', backgroundColor: 'transparent', duration: 0.3 });
+                        gsap.to(dot, { scale: 1, backgroundColor: '#f59e0b', duration: 0.3 });
                     });
                 });
             };
