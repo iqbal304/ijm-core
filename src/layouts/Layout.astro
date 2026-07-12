@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
 import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 inject();
+injectSpeedInsights();
 
 interface Props { title: string; }
 const { title } = Astro.props;
