@@ -1,42 +1,46 @@
 ---
 ---
-<section id="hero-section" class="min-h-[90vh] relative z-20 pt-32 pb-16 flex flex-col justify-between">
+<!-- STRUKTUR KOSMIK: flex-col di HP, flex-row (50:50) di Desktop -->
+<section id="hero-section" class="min-h-screen flex flex-col xl:flex-row items-center justify-between relative z-20 pt-24 pb-10">
     
-    <!-- TIER 1 (ATAS): Badge & Nama -->
-    <div class="w-full relative z-30">
-        <div class="hero-item inline-flex items-center gap-3 px-4 py-1.5 rounded bg-[#080d1a]/80 border border-emerald-500/30 text-emerald-400 font-mono text-xs mb-6 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            >_ LOW-LATENCY ARCHITECT // IJM.CORE
-        </div>
+    <!-- BAGIAN KIRI: Stack Vertikal (Badge -> Nama -> Filosofi -> Terminal Log) -->
+    <div class="w-full xl:w-1/2 flex flex-col justify-center text-left relative z-30">
         
-        <h1 class="hero-item scramble-text text-6xl sm:text-8xl lg:text-9xl font-extrabold text-white tracking-tighter leading-[0.85] mb-4 text-glow-green drop-shadow-2xl max-w-5xl" data-target="Iqbal Marjan">
-            Iqbal Marjan
-        </h1>
-    </div>
+        <!-- 1. Profile Badge (Bergaya Terminal HFT) -->
+        <div class="hero-item mb-8 relative group w-max">
+            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-200"></div>
+            
+            <div class="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-cyan-400 z-20 transition-all group-hover:-top-2 group-hover:-left-2"></div>
+            <div class="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-emerald-400 z-20 transition-all group-hover:-top-2 group-hover:-right-2"></div>
+            <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-cyan-400 z-20 transition-all group-hover:-bottom-2 group-hover:-left-2"></div>
+            <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-emerald-400 z-20 transition-all group-hover:-bottom-2 group-hover:-right-2"></div>
 
-    <!-- TIER 2: L-Shape Layout (Diubah ke items-stretch agar tinggi kartu proporsional & stabil) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mt-12 relative z-30">
-        
-        <!-- KIRI: Kartu Filosofi HFT (Diperkuat border, shadow, dan z-index agar anti-hilang) -->
-        <div class="hero-item lg:col-span-5 bg-[#080d1a]/90 backdrop-blur-xl p-8 rounded-2xl border border-emerald-500/40 shadow-[0_0_30px_rgba(16,185,129,0.15)] hover:border-cyan-400/60 transition-all duration-500 group relative z-40 flex flex-col justify-center">
-            <div class="flex items-center gap-4 mb-6 border-b border-white/10 pb-4">
-                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-14 h-14 rounded-xl object-cover border-2 border-emerald-500/60 group-hover:scale-105 transition-transform shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
-                <div>
-                    <h3 class="text-white font-bold text-base flex items-center gap-2">
+            <div class="relative flex items-center gap-4 bg-[#030508] border border-emerald-500/30 p-2 rounded-2xl z-10 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-16 h-16 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500 border border-emerald-500/40" />
+                <div class="pr-4">
+                    <h3 class="text-white font-bold text-sm flex items-center gap-2">
                         Iqbal Jabar Marjan
                         <span class="w-2 h-2 bg-emerald-400 rounded-full animate-ping" title="System Online"></span>
                     </h3>
-                    <p class="text-[10px] font-mono text-cyan-400 tracking-widest uppercase mt-0.5">FULLSTACK & CLOUD ENGINEER</p>
+                    <p class="text-[10px] font-mono text-cyan-400 tracking-widest uppercase mt-0.5">LOW-LATENCY ARCHITECT // IJM.CORE</p>
                 </div>
             </div>
-            
-            <h2 class="text-base sm:text-lg font-light text-zinc-200 leading-relaxed font-sans">
-                "<span class="font-bold text-white">Backend</span> adalah <span class="font-semibold text-emerald-400 text-glow-green">High-Frequency Pipeline</span> yang memproses data tanpa henti. <span class="font-bold text-white">Frontend</span> adalah <span class="text-cyan-400 font-semibold text-glow-cyan">Terminal Analitik</span> dengan eksekusi visual presisi nol-latensi."
-            </h2>
         </div>
-
-        <!-- TENGAH: Terminal Eksekusi Log (Telemetry HUD Anti-Bug) -->
-        <div class="hero-item lg:col-span-4 bg-[#080d1a]/80 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(16,185,129,0.1)] relative overflow-hidden group hover:border-cyan-400/50 transition-colors duration-500 flex flex-col justify-center">
+        
+        <!-- 2. Main Heading -->
+        <h1 class="hero-item scramble-text text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white mb-6 tracking-tighter leading-[0.9] text-glow-green drop-shadow-2xl" data-target="Iqbal Marjan">
+            Iqbal Marjan
+        </h1>
+        
+        <!-- 3. Teks Filosofi HFT (Di bawah judul persis, dijamin ANTI-HILANG!) -->
+        <h2 class="hero-item text-lg sm:text-2xl font-light text-zinc-300 mb-8 leading-relaxed border-l-2 border-emerald-500/40 pl-6">
+            <span class="font-bold text-white">Backend</span> adalah <span class="font-semibold text-emerald-400 text-glow-green">High-Frequency Pipeline</span> yang memproses data tanpa henti.<br/>
+            <span class="font-bold text-white">Frontend</span> adalah <span class="text-cyan-400 font-semibold text-glow-cyan">Terminal Analitik</span> dengan eksekusi visual presisi nol-latensi.
+        </h2>
+        
+        <!-- 4. Execution Terminal Log -->
+        <div class="hero-item relative w-full max-w-lg mt-2 bg-[#080d1a]/80 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(16,185,129,0.1)] overflow-hidden group hover:border-cyan-400/50 transition-colors duration-500">
+            
             <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
             <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
@@ -70,31 +74,32 @@
             </div>
         </div>
 
-        <!-- KANAN: Global Cloud Node -->
-        <div class="hero-item lg:col-span-3 flex justify-center items-center relative py-8 lg:py-0 lg:absolute lg:right-4 lg:top-1/4 pointer-events-auto">
-            
-            <!-- Cincin Server Racks -->
-            <div class="absolute w-[260px] h-[260px] sm:w-[350px] sm:h-[350px] rounded-full border border-emerald-500/20 animate-[spin_25s_linear_infinite_reverse] flex items-center justify-center pointer-events-none">
-                <div class="absolute -top-3 bg-[#030508] border border-emerald-500/50 text-emerald-400 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(16,185,129,0.3)]">CLOUD_CLUSTER_01</div>
-                <div class="absolute -bottom-3 bg-[#030508] border border-cyan-400/50 text-cyan-300 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(6,182,212,0.3)]">ZERO_LATENCY_UI</div>
+    </div>
+
+    <!-- BAGIAN KANAN: Global Cloud Node (Posisi Center persis seperti Kosmik/Laputa) -->
+    <div class="w-full xl:w-1/2 flex justify-center items-center mt-20 xl:mt-0 relative hero-item min-h-[300px] lg:min-h-[500px]">
+        
+        <!-- Cincin Server Racks -->
+        <div class="absolute w-[300px] h-[300px] sm:w-[460px] sm:h-[460px] rounded-full border border-emerald-500/20 animate-[spin_25s_linear_infinite_reverse] flex items-center justify-center pointer-events-none">
+            <div class="absolute -top-3 bg-[#030508] border border-emerald-500/50 text-emerald-400 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(16,185,129,0.3)]">CLOUD_CLUSTER_01</div>
+            <div class="absolute -bottom-3 bg-[#030508] border border-cyan-400/50 text-cyan-300 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(6,182,212,0.3)]">ZERO_LATENCY_UI</div>
+            <div class="absolute -left-3 bg-[#030508] border border-blue-500/50 text-blue-400 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(59,130,246,0.3)]">HIGH_THROUGHPUT</div>
+        </div>
+
+        <!-- Cincin Fiber Optic -->
+        <div class="absolute w-[220px] h-[220px] sm:w-[340px] sm:h-[340px] rounded-full border border-cyan-400/30 animate-[spin_15s_linear_infinite] flex items-center justify-center">
+            <span class="absolute -top-3 text-[10px] sm:text-xs font-mono text-blue-400 tracking-widest bg-[#030508] px-3 border border-blue-500/40 rounded">GLOBAL DATA MESH</span>
+        </div>
+
+        <!-- Cincin Throughput -->
+        <div class="absolute w-[170px] h-[170px] sm:w-[260px] sm:h-[260px] rounded-full border-2 border-t-emerald-500 border-r-cyan-400 border-b-transparent border-l-blue-500 animate-[spin_8s_linear_infinite_reverse] blur-[1px]"></div>
+
+        <!-- Inti Cloud Node -->
+        <div id="cloud-node" class="relative w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] rounded bg-gradient-to-br from-emerald-500 via-cyan-600 to-blue-500 p-[2px] shadow-[0_0_60px_20px_rgba(16,185,129,0.35),inset_0_0_30px_rgba(255,255,255,0.5)] z-10 flex items-center justify-center overflow-hidden cursor-crosshair animate-float rotate-45">
+            <div class="absolute inset-0 bg-[#030508]/90 backdrop-blur-sm flex items-center justify-center -rotate-45">
+                <div class="w-16 h-16 sm:w-24 sm:h-24 rounded bg-gradient-to-tr from-emerald-500 to-cyan-400 animate-pulse blur-md opacity-80"></div>
+                <span class="font-mono text-[10px] text-emerald-200 tracking-[0.3em] z-20 font-bold drop-shadow-[0_0_8px_#10b981]">NODE_01</span>
             </div>
-
-            <!-- Cincin Fiber Optic -->
-            <div class="absolute w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] rounded-full border border-cyan-400/30 animate-[spin_15s_linear_infinite] flex items-center justify-center">
-                <span class="absolute -top-3 text-[9px] font-mono text-blue-400 tracking-widest bg-[#030508] px-3 border border-blue-500/40 rounded">GLOBAL DATA MESH</span>
-            </div>
-
-            <!-- Cincin Throughput -->
-            <div class="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] rounded-full border-2 border-t-emerald-500 border-r-cyan-400 border-b-transparent border-l-blue-500 animate-[spin_8s_linear_infinite_reverse] blur-[1px]"></div>
-
-            <!-- Inti Cloud Node -->
-            <div id="cloud-node" class="relative w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] rounded bg-gradient-to-br from-emerald-500 via-cyan-600 to-blue-500 p-[2px] shadow-[0_0_50px_15px_rgba(16,185,129,0.35),inset_0_0_20px_rgba(255,255,255,0.5)] z-10 flex items-center justify-center overflow-hidden cursor-crosshair animate-float rotate-45">
-                <div class="absolute inset-0 bg-[#030508]/90 backdrop-blur-sm flex items-center justify-center -rotate-45">
-                    <div class="w-14 h-14 sm:w-20 sm:h-20 rounded bg-gradient-to-tr from-emerald-500 to-cyan-400 animate-pulse blur-md opacity-80"></div>
-                    <span class="font-mono text-[10px] text-emerald-200 tracking-[0.3em] z-20 font-bold drop-shadow-[0_0_8px_#10b981]">NODE_01</span>
-                </div>
-            </div>
-
         </div>
 
     </div>
@@ -129,7 +134,7 @@
                     const rect = heroSection.getBoundingClientRect();
                     const x = (e.clientX - rect.left - rect.width/2) * 0.08;
                     const y = (e.clientY - rect.top - rect.height/2) * 0.08;
-                    window.gsap.to(cloudNode, { x: x, y: y, rotation: 45 + (x*0.4), duration: 0.6, ease: "power2.out" });
+                    window.gsap.to(cloudNode, { x: x, y: y, rotation: 45 + (x*0.3), duration: 0.6, ease: "power2.out" });
                 });
                 heroSection.addEventListener('mouseleave', () => {
                     window.gsap.to(cloudNode, { x: 0, y: 0, rotation: 45, duration: 1.5, ease: "elastic.out(1, 0.3)" });
@@ -137,7 +142,6 @@
             }
 
             // 3. FAIL-SAFE (PENGAMAN ANTI-HILANG):
-            // Memaksa semua kartu (.hero-item) wajib muncul (opacity 1) jika dalam 1.5 detik GSAP gagal memunculkannya.
             setTimeout(() => {
                 document.querySelectorAll('.hero-item').forEach(el => {
                     if (window.getComputedStyle(el).opacity === '0') {
