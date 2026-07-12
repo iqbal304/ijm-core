@@ -1,12 +1,11 @@
 ---
 ---
-<!-- STRUKTUR KOSMIK: flex-col di HP, flex-row (50:50) di Desktop -->
 <section id="hero-section" class="min-h-screen flex flex-col xl:flex-row items-center justify-between relative z-20 pt-24 pb-10">
     
-    <!-- BAGIAN KIRI: Stack Vertikal (Badge -> Nama -> Filosofi -> Terminal Log) -->
+    <!-- BAGIAN KIRI: Teks & Prasasti Penjaga -->
     <div class="w-full xl:w-1/2 flex flex-col justify-center text-left relative z-30">
         
-        <!-- 1. Profile Badge (Bergaya Terminal HFT) -->
+        <!-- Profile Badge -->
         <div class="hero-item mb-8 relative group w-max">
             <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-200"></div>
             
@@ -15,60 +14,63 @@
             <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-cyan-400 z-20 transition-all group-hover:-bottom-2 group-hover:-left-2"></div>
             <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-emerald-400 z-20 transition-all group-hover:-bottom-2 group-hover:-right-2"></div>
 
-            <div class="relative flex items-center gap-4 bg-[#030508] border border-emerald-500/30 p-2 rounded-2xl z-10 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-16 h-16 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500 border border-emerald-500/40" />
+            <div class="relative flex items-center gap-4 bg-[#070b12] border border-emerald-500/20 p-2 rounded-2xl z-10">
+                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-16 h-16 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500 border border-emerald-500/30" />
                 <div class="pr-4">
                     <h3 class="text-white font-bold text-sm flex items-center gap-2">
                         Iqbal Jabar Marjan
-                        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-ping" title="System Online"></span>
+                        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-ping" title="Aether Levitation Active"></span>
                     </h3>
-                    <p class="text-[10px] font-mono text-cyan-400 tracking-widest uppercase mt-0.5">LOW-LATENCY ARCHITECT // IJM.CORE</p>
+                    <p class="text-[10px] font-mono text-emerald-400 tracking-widest uppercase">ARSITEK ISTANA LANGIT</p>
                 </div>
             </div>
         </div>
         
-        <!-- 2. Main Heading -->
-        <h1 class="hero-item scramble-text text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white mb-6 tracking-tighter leading-[0.9] text-glow-green drop-shadow-2xl" data-target="Iqbal Marjan">
+        <!-- Main Heading -->
+        <h1 class="hero-item scramble-text text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white mb-6 tracking-tighter leading-[0.9] text-glow-cyan drop-shadow-2xl" data-target="Iqbal Marjan">
             Iqbal Marjan
         </h1>
         
-        <!-- 3. Teks Filosofi HFT (Di bawah judul persis, dijamin ANTI-HILANG!) -->
+        <!-- Subheading Filosofis Laputa -->
         <h2 class="hero-item text-lg sm:text-2xl font-light text-zinc-300 mb-8 leading-relaxed border-l-2 border-emerald-500/40 pl-6">
-            <span class="font-bold text-white">Backend</span> adalah <span class="font-semibold text-emerald-400 text-glow-green">High-Frequency Pipeline</span> yang memproses data tanpa henti.<br/>
-            <span class="font-bold text-white">Frontend</span> adalah <span class="text-cyan-400 font-semibold text-glow-cyan">Terminal Analitik</span> dengan eksekusi visual presisi nol-latensi.
+            <span class="font-bold text-white">Backend</span> adalah <span class="font-semibold text-cyan-400 text-glow-cyan">Batu Levitas</span> yang menopang sistem.<br/>
+            <span class="font-bold text-white">Frontend</span> adalah <span class="italic text-emerald-400 text-glow-emerald">Ekosistem Alam</span> yang bersemi di atasnya.
         </h2>
         
-        <!-- 4. Execution Terminal Log -->
-        <div class="hero-item relative w-full max-w-lg mt-2 bg-[#080d1a]/80 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(16,185,129,0.1)] overflow-hidden group hover:border-cyan-400/50 transition-colors duration-500">
+        <!-- Prasasti Penjaga (Guardian Log - Anti Bug) -->
+        <div class="hero-item relative w-full max-w-lg mt-4 bg-[#0a1118]/60 backdrop-blur-xl border border-emerald-500/20 rounded-xl p-5 shadow-[0_0_30px_rgba(16,185,129,0.08)] overflow-hidden group hover:border-cyan-500/40 transition-colors duration-500">
             
-            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
             <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-                <span class="text-[10px] font-mono text-emerald-400 tracking-[0.2em] uppercase flex items-center gap-2 font-bold">
-                    <span class="inline-block w-2 h-2 bg-cyan-400 animate-pulse"></span>
-                    Execution_Terminal.log
+                <span class="text-[10px] font-mono text-cyan-400 tracking-[0.2em] uppercase flex items-center gap-2">
+                    <span class="inline-block w-2 h-2 rotate-45 bg-amber-400 animate-pulse"></span>
+                    Prasasti_Penjaga.log
                 </span>
-                <span class="text-[9px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-500/30 animate-pulse">
-                    LATENCY: 0.08ms
-                </span>
+                <div class="flex items-center gap-2 text-[9px] font-mono text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-500/30">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    700 TAHUN AKTIF
+                </div>
             </div>
 
-            <div class="space-y-3 font-mono text-xs text-zinc-400">
-                <div class="flex justify-between items-center bg-black/50 p-2.5 rounded border border-white/5">
-                    <span class="text-[10px] text-zinc-500">CORE_THROUGHPUT:</span>
-                    <span class="text-white font-bold">Astro Engine v4 <span class="text-emerald-400 text-[10px] ml-1">[OPTIMIZED]</span></span>
+            <div class="grid grid-cols-2 gap-5 font-mono text-xs text-zinc-400">
+                <div class="flex flex-col gap-1.5">
+                    <span class="text-[9px] text-zinc-500 tracking-widest">INTI_LEVITAS</span>
+                    <span class="text-white font-bold flex items-center gap-1.5">
+                        Aether Core v4 <span class="text-cyan-400 text-[10px]">[STABIL]</span>
+                    </span>
                 </div>
-                <div class="flex justify-between items-center bg-black/50 p-2.5 rounded border border-white/5">
-                    <span class="text-[10px] text-zinc-500">DATA_PIPELINE:</span>
-                    <span class="text-white font-bold text-glow-cyan">Node.js / REST API / Git</span>
+                <div class="flex flex-col gap-1.5">
+                    <span class="text-[9px] text-zinc-500 tracking-widest">STRUKTUR_BATU</span>
+                    <span class="text-white font-bold text-glow-amber">Astro / Tailwind</span>
                 </div>
-                <div class="pt-1">
-                    <div class="flex justify-between text-[9px] tracking-widest mb-1">
-                        <span>MEMORY LEAK ZERO & STABILITY</span>
-                        <span class="text-emerald-400">100% HEALTHY</span>
+                <div class="flex flex-col gap-2 col-span-2 mt-1">
+                    <div class="flex justify-between text-[9px] tracking-widest">
+                        <span>SINKRONISASI_ALAM & LOGIKA</span>
+                        <span class="text-emerald-400">100% HARMONI</span>
                     </div>
-                    <div class="w-full h-1.5 bg-white/10 rounded overflow-hidden">
-                        <div class="h-full bg-gradient-to-r from-emerald-500 via-cyan-400 to-blue-500 w-full shadow-[0_0_10px_#10b981]"></div>
+                    <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-emerald-500 via-cyan-400 to-amber-400 w-full shadow-[0_0_10px_#06b6d4]"></div>
                     </div>
                 </div>
             </div>
@@ -76,29 +78,30 @@
 
     </div>
 
-    <!-- BAGIAN KANAN: Global Cloud Node (Posisi Center persis seperti Kosmik/Laputa) -->
+    <!-- BAGIAN KANAN: Visual Kristal Levitas (The Core) -->
     <div class="w-full xl:w-1/2 flex justify-center items-center mt-20 xl:mt-0 relative hero-item min-h-[300px] lg:min-h-[500px]">
         
-        <!-- Cincin Server Racks -->
-        <div class="absolute w-[300px] h-[300px] sm:w-[460px] sm:h-[460px] rounded-full border border-emerald-500/20 animate-[spin_25s_linear_infinite_reverse] flex items-center justify-center pointer-events-none">
-            <div class="absolute -top-3 bg-[#030508] border border-emerald-500/50 text-emerald-400 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(16,185,129,0.3)]">CLOUD_CLUSTER_01</div>
-            <div class="absolute -bottom-3 bg-[#030508] border border-cyan-400/50 text-cyan-300 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(6,182,212,0.3)]">ZERO_LATENCY_UI</div>
-            <div class="absolute -left-3 bg-[#030508] border border-blue-500/50 text-blue-400 text-[9px] px-3 py-1 rounded font-mono shadow-[0_0_10px_rgba(59,130,246,0.3)]">HIGH_THROUGHPUT</div>
+        <!-- Cincin Prasasti Luar (Ancient Runes) -->
+        <div class="absolute w-[300px] h-[300px] sm:w-[460px] sm:h-[460px] rounded-full border border-emerald-500/20 animate-[spin_35s_linear_infinite_reverse] flex items-center justify-center pointer-events-none">
+            <div class="absolute -top-3 bg-[#070b12] border border-cyan-500/50 text-cyan-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(6,182,212,0.3)]">VOLUSPA_LOGIC</div>
+            <div class="absolute -bottom-3 bg-[#070b12] border border-emerald-500/50 text-emerald-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(16,185,129,0.3)]">NATURE_UI</div>
+            <div class="absolute -left-3 bg-[#070b12] border border-amber-500/50 text-amber-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(245,158,11,0.3)]">LEVITATION_STONE</div>
         </div>
 
-        <!-- Cincin Fiber Optic -->
-        <div class="absolute w-[220px] h-[220px] sm:w-[340px] sm:h-[340px] rounded-full border border-cyan-400/30 animate-[spin_15s_linear_infinite] flex items-center justify-center">
-            <span class="absolute -top-3 text-[10px] sm:text-xs font-mono text-blue-400 tracking-widest bg-[#030508] px-3 border border-blue-500/40 rounded">GLOBAL DATA MESH</span>
+        <!-- Cincin Ukiran Tengah -->
+        <div class="absolute w-[220px] h-[220px] sm:w-[340px] sm:h-[340px] rounded-full border border-cyan-500/30 animate-[spin_20s_linear_infinite] flex items-center justify-center">
+            <span class="absolute -top-3 text-[10px] sm:text-xs font-mono text-emerald-400 tracking-widest bg-[#070b12] px-3 border border-emerald-500/40 rounded-full">TENKU NO SHIRO</span>
         </div>
 
-        <!-- Cincin Throughput -->
-        <div class="absolute w-[170px] h-[170px] sm:w-[260px] sm:h-[260px] rounded-full border-2 border-t-emerald-500 border-r-cyan-400 border-b-transparent border-l-blue-500 animate-[spin_8s_linear_infinite_reverse] blur-[1px]"></div>
+        <!-- Cincin Energi Emas -->
+        <div class="absolute w-[170px] h-[170px] sm:w-[260px] sm:h-[260px] rounded-full border-2 border-t-cyan-400 border-r-emerald-400 border-b-transparent border-l-amber-400 animate-[spin_12s_linear_infinite_reverse] blur-[2px]"></div>
 
-        <!-- Inti Cloud Node -->
-        <div id="cloud-node" class="relative w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] rounded bg-gradient-to-br from-emerald-500 via-cyan-600 to-blue-500 p-[2px] shadow-[0_0_60px_20px_rgba(16,185,129,0.35),inset_0_0_30px_rgba(255,255,255,0.5)] z-10 flex items-center justify-center overflow-hidden cursor-crosshair animate-float rotate-45">
-            <div class="absolute inset-0 bg-[#030508]/90 backdrop-blur-sm flex items-center justify-center -rotate-45">
-                <div class="w-16 h-16 sm:w-24 sm:h-24 rounded bg-gradient-to-tr from-emerald-500 to-cyan-400 animate-pulse blur-md opacity-80"></div>
-                <span class="font-mono text-[10px] text-emerald-200 tracking-[0.3em] z-20 font-bold drop-shadow-[0_0_8px_#10b981]">NODE_01</span>
+        <!-- Inti Kristal Levitas (Levitation Stone Core) -->
+        <div id="crystal-core" class="relative w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] rounded-2xl rotate-45 bg-gradient-to-br from-cyan-500 via-emerald-600 to-amber-500 p-[2px] shadow-[0_0_60px_20px_rgba(6,182,212,0.3),inset_0_0_30px_rgba(255,255,255,0.5)] z-10 flex items-center justify-center overflow-hidden cursor-crosshair animate-float">
+            <div class="absolute inset-0 bg-[#070b12]/90 backdrop-blur-sm flex items-center justify-center">
+                <!-- Glowing Core Center -->
+                <div class="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 animate-pulse blur-md opacity-80"></div>
+                <span class="font-mono text-[10px] text-cyan-200 tracking-[0.3em] z-20 -rotate-45 font-bold drop-shadow-[0_0_8px_#06b6d4]">LAPUTA</span>
             </div>
         </div>
 
@@ -109,12 +112,13 @@
     (function initHeroSection() {
         document.addEventListener("DOMContentLoaded", () => {
             
-            // 1. SCRAMBLE TEXT EFFECT
-            const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&*+~";
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+~";
             const scrambleElements = document.querySelectorAll('.scramble-text');
+            
             scrambleElements.forEach(el => {
                 const target = el.getAttribute('data-target');
                 if (!target) return; 
+                
                 let iteration = 0;
                 const interval = setInterval(() => {
                     el.innerText = target.split("").map((letter, index) => {
@@ -126,32 +130,20 @@
                 }, 30);
             });
 
-            // 2. CLOUD NODE HOVER EFFECT
             const heroSection = document.getElementById('hero-section');
-            const cloudNode = document.getElementById('cloud-node');
-            if(heroSection && cloudNode && typeof window.gsap !== 'undefined') {
+            const crystalCore = document.getElementById('crystal-core');
+
+            if(heroSection && crystalCore && typeof window.gsap !== 'undefined') {
                 heroSection.addEventListener('mousemove', (e) => {
                     const rect = heroSection.getBoundingClientRect();
                     const x = (e.clientX - rect.left - rect.width/2) * 0.08;
                     const y = (e.clientY - rect.top - rect.height/2) * 0.08;
-                    window.gsap.to(cloudNode, { x: x, y: y, rotation: 45 + (x*0.3), duration: 0.6, ease: "power2.out" });
+                    window.gsap.to(crystalCore, { x: x, y: y, rotation: 45 + (x*0.2), duration: 0.6, ease: "power2.out" });
                 });
                 heroSection.addEventListener('mouseleave', () => {
-                    window.gsap.to(cloudNode, { x: 0, y: 0, rotation: 45, duration: 1.5, ease: "elastic.out(1, 0.3)" });
+                    window.gsap.to(crystalCore, { x: 0, y: 0, rotation: 45, duration: 1.5, ease: "elastic.out(1, 0.3)" });
                 });
             }
-
-            // 3. FAIL-SAFE (PENGAMAN ANTI-HILANG):
-            setTimeout(() => {
-                document.querySelectorAll('.hero-item').forEach(el => {
-                    if (window.getComputedStyle(el).opacity === '0') {
-                        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    }
-                });
-            }, 1500);
-
         });
     })();
 </script>

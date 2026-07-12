@@ -7,7 +7,7 @@ import EarthquakeProject from '../components/EarthquakeProject.astro';
 import MusicPlayer from '../components/MusicPlayer.astro';
 ---
 
-<Layout title="Low-Latency Architect - IJM.CORE">
+<Layout title="IJM Core - Web Portofolio Iqbal Jabar Marjan">
     <Navbar />
     
     <MusicPlayer />
@@ -16,39 +16,39 @@ import MusicPlayer from '../components/MusicPlayer.astro';
         
         <Hero />
 
-        <!-- Seksi Global Telemetry Feed (Kembali ke pola 1:2 ala Kosmik/Laputa) -->
-        <section id="observatory" class="py-20 reveal-scroll mt-20 relative z-10 border-t border-emerald-500/20">
+        <!-- Seksi Monitor Resonansi Aether -->
+        <section id="observatory" class="py-20 reveal-scroll mt-20 relative z-10 border-t border-emerald-500/15">
             <div class="flex items-center gap-4 mb-12">
-                <span class="text-emerald-500 font-mono text-lg font-bold">01.</span>
-                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-tighter drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">Real-Time Seismological Feed</h2>
+                <span class="text-cyan-400 font-mono text-lg font-bold">01.</span>
+                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-tighter drop-shadow-[0_0_10px_rgba(6,182,212,0.3)]">Monitor Resonansi Aether</h2>
                 <div class="h-px bg-gradient-to-r from-emerald-500/30 to-transparent grow max-w-sm ml-4 hidden sm:block"></div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                <!-- Kolom Kiri (col-span-1): Penjelasan HFT & Snippet Code -->
+                <!-- Kartu Deskripsi Filosofis -->
                 <div class="lg:col-span-1 flex flex-col gap-6">
-                    <div class="bg-[#080d1a]/80 border border-emerald-500/20 p-6 xl:p-8 rounded-2xl backdrop-blur-md h-full flex flex-col justify-between shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                    <div class="bg-[#0a1118]/80 border border-emerald-500/20 p-6 xl:p-8 rounded-2xl backdrop-blur-md h-full flex flex-col justify-between shadow-[0_0_30px_rgba(0,0,0,0.5)]">
                         <div>
-                            <div class="text-[9px] font-mono text-cyan-400 tracking-[0.2em] mb-4 flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                                DATA_PIPELINE_ACTIVE
+                            <div class="text-[9px] font-mono text-cyan-300 tracking-[0.2em] mb-4 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></span>
+                                TELEMETRI_BUMI_AKTIF
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Integrasi API Seismik</h3>
                             <p class="text-xs md:text-sm text-zinc-300 font-light leading-relaxed mb-6">
-                                Infrastruktur pemantauan global memproses aktivitas seismik bumi secara <span class="text-emerald-400 font-medium">real-time</span> dengan latensi minimal. Data mentah dari USGS diolah oleh *backend*, dikonversi menjadi koordinat radar, dan dipancarkan langsung ke layar.
+                                Dari ketinggian Istana Langit, sistem Batu Levitas memantau getaran tektonik bumi secara *real-time*. Data mentah dari USGS diolah oleh *backend*, dikonversi menjadi koordinat visual, dan dipancarkan ke atas awan.
                             </p>
                         </div>
                         
-                        <div class="font-mono text-[10px] md:text-xs text-zinc-400 bg-[#030508] p-3.5 md:p-4 rounded-xl border border-emerald-500/20 overflow-x-auto shadow-inner">
-                            <span class="text-emerald-400">fetch</span>('https://earthquake.../geojson')<br/>
-                            &nbsp;&nbsp;.then(res => res.<span class="text-cyan-400">json</span>())<br/>
-                            &nbsp;&nbsp;.then(data => renderTelemetryMap(data));
+                        <div class="font-mono text-[10px] md:text-xs text-zinc-400 bg-[#070b12] p-3.5 md:p-4 rounded-xl border border-emerald-500/20 overflow-x-auto shadow-inner">
+                            <span class="text-cyan-400">fetch</span>('https://earthquake.../geojson')<br/>
+                            &nbsp;&nbsp;.then(res => res.<span class="text-emerald-400">json</span>())<br/>
+                            &nbsp;&nbsp;.then(data => renderAetherMap(data));
                         </div>
                     </div>
                 </div>
 
-                <!-- Kolom Kanan (col-span-2): Peta Leaflet -->
+                <!-- Map Komponen -->
                 <div class="lg:col-span-2 relative">
                     <EarthquakeProject />
                 </div>
