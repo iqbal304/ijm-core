@@ -22,27 +22,27 @@ const { title } = Astro.props;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-amber-500/30 relative overflow-x-hidden">
+<body class="antialiased selection:bg-orange-500/30 relative overflow-x-hidden">
     
-    <!-- ENGINE PARTIKEL DEBU EMAS & RASI GEOMETRI -->
-    <canvas id="golden-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-70"></canvas>
+    <!-- ENGINE PARTIKEL CHAKRA EMBERS -->
+    <canvas id="chakra-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-70"></canvas>
     
-    <!-- Ambient Glow (Sacred Gold & Persian Teal) -->
-    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-amber-600/10 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
-    <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-teal-900/15 blur-[130px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+    <!-- Ambient Glow (Chakra Crimson & Electric Cyan) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-orange-600/15 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-cyan-600/10 blur-[130px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
 
-    <!-- KURSOR GEOMETRI SUCI -->
-    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 bg-amber-400 rounded-full pointer-events-none z-[9999] shadow-[0_0_12px_#f59e0b]"></div>
+    <!-- KURSOR SHURIKEN TARGET -->
+    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 bg-orange-500 rounded-full pointer-events-none z-[9999] shadow-[0_0_12px_#f97316]"></div>
     
-    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-teal-500/50 rounded-full pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen">
-        <div class="absolute w-1.5 h-1.5 bg-teal-300/60 rounded-full animate-ping"></div>
+    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-cyan-400/50 rounded-full pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen rotate-45">
+        <div class="absolute w-2 h-2 border border-orange-500/60 animate-ping"></div>
     </div>
 
     <slot />
     
     <script is:inline>
-        // SCRIPT KANVAS: DEBU EMAS ALGORITHMIC
-        const canvas = document.getElementById('golden-canvas');
+        // SCRIPT KANVAS: CHAKRA EMBERS
+        const canvas = document.getElementById('chakra-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, motes = [];
 
@@ -50,15 +50,15 @@ const { title } = Astro.props;
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             motes = [];
-            for (let i = 0; i < 70; i++) {
+            for (let i = 0; i < 75; i++) {
                 motes.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    size: Math.random() * 2 + 0.5,
-                    speedY: Math.random() * 0.4 + 0.1,
-                    speedX: (Math.random() - 0.5) * 0.2,
-                    opacity: Math.random() * 0.6 + 0.2,
-                    color: Math.random() > 0.4 ? '#f59e0b' : (Math.random() > 0.5 ? '#14b8a6' : '#fef3c7')
+                    size: Math.random() * 2.5 + 0.5,
+                    speedY: Math.random() * 0.8 + 0.3,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    opacity: Math.random() * 0.7 + 0.2,
+                    color: Math.random() > 0.4 ? '#f97316' : (Math.random() > 0.3 ? '#22d3ee' : '#ef4444')
                 });
             }
         }
@@ -75,7 +75,7 @@ const { title } = Astro.props;
                 ctx.beginPath();
                 ctx.fillStyle = m.color;
                 ctx.globalAlpha = m.opacity;
-                ctx.shadowBlur = 6;
+                ctx.shadowBlur = 8;
                 ctx.shadowColor = m.color;
                 ctx.arc(m.x, m.y, m.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -95,22 +95,23 @@ const { title } = Astro.props;
 
             window.addEventListener('mousemove', (e) => {
                 gsap.to(dot, { x: e.clientX - 4, y: e.clientY - 4, duration: 0 });
-                gsap.to(ring, { x: e.clientX - 16, y: e.clientY - 16, duration: 0.2, ease: "power2.out" });
+                gsap.to(ring, { x: e.clientX - 16, y: e.clientY - 16, duration: 0.15, ease: "power2.out" });
             });
 
+            // Gunakan file hover.mp3 yang sama (efek suara swish/katana jika ada)
             const hoverSound = new Howl({ src: ['/hover.mp3'], volume: 0.15 });
 
             const addHoverEffect = () => {
-                const clickables = document.querySelectorAll('a, button, #astrolabe-core, .group');
+                const clickables = document.querySelectorAll('a, button, #chakra-core, .group');
                 clickables.forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         if(hoverSound.state() === 'loaded') hoverSound.play(); 
-                        gsap.to(ring, { scale: 1.6, borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', duration: 0.3 });
-                        gsap.to(dot, { scale: 1.5, backgroundColor: '#14b8a6', duration: 0.3 });
+                        gsap.to(ring, { scale: 1.5, borderColor: '#f97316', rotation: 90, duration: 0.2 });
+                        gsap.to(dot, { scale: 1.8, backgroundColor: '#22d3ee', duration: 0.2 });
                     });
                     el.addEventListener('mouseleave', () => {
-                        gsap.to(ring, { scale: 1, borderColor: 'rgba(20, 184, 166, 0.5)', backgroundColor: 'transparent', duration: 0.3 });
-                        gsap.to(dot, { scale: 1, backgroundColor: '#f59e0b', duration: 0.3 });
+                        gsap.to(ring, { scale: 1, borderColor: 'rgba(34, 211, 238, 0.5)', rotation: 45, duration: 0.2 });
+                        gsap.to(dot, { scale: 1, backgroundColor: '#f97316', duration: 0.2 });
                     });
                 });
             };

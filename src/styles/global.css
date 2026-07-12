@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #f59e0b; /* amber-500 (Sacred Gold) */
-  --color-secondary: #14b8a6; /* teal-500 (Persian Teal) */
-  --color-accent: #fef3c7; /* amber-100 (Desert Sand) */
+  --color-primary: #f97316; /* orange-500 (Chakra Crimson) */
+  --color-secondary: #22d3ee; /* cyan-400 (Electric Blue) */
+  --color-accent: #ef4444; /* red-500 (Fuinjutsu Seal) */
 }
 
 body { 
     font-family: 'Inter', sans-serif; 
-    background-color: #060913; /* Abbasid Deep Night */
+    background-color: #08080c; /* Shadow Void Night */
     color: #e4e4e7;
     overflow-x: hidden;
     cursor: none; 
@@ -22,7 +22,7 @@ a, button, [role="button"], input, select, textarea {
     font-family: 'Fira Code', monospace; 
 }
 
-/* Animasi Rotasi Astrolabe Geometri */
+/* Animasi Rotasi Segel Fuinjutsu */
 @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes spin-reverse { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
 @keyframes float-gentle { 
@@ -30,13 +30,13 @@ a, button, [role="button"], input, select, textarea {
     50% { transform: translateY(-10px); } 
 }
 
-.animate-spin-slow { animation: spin-slow 35s linear infinite; }
-.animate-spin-reverse { animation: spin-reverse 28s linear infinite; }
-.animate-float { animation: float-gentle 6s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 30s linear infinite; }
+.animate-spin-reverse { animation: spin-reverse 22s linear infinite; }
+.animate-float { animation: float-gentle 5s ease-in-out infinite; }
 
-/* Efek Cahaya Emas & Teal Aljabar */
-.text-glow-amber { text-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
-.text-glow-teal { text-shadow: 0 0 15px rgba(20, 184, 166, 0.6); }
+/* Efek Glow Chakra */
+.text-glow-orange { text-shadow: 0 0 15px rgba(249, 115, 22, 0.7); }
+.text-glow-cyan { text-shadow: 0 0 15px rgba(34, 211, 238, 0.7); }
 
 @media (pointer: coarse) {
     #cursor-dot, #cursor-ring { display: none !important; }

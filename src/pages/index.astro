@@ -7,7 +7,7 @@ import EarthquakeProject from '../components/EarthquakeProject.astro';
 import MusicPlayer from '../components/MusicPlayer.astro';
 ---
 
-<Layout title="The Algorithmic Heritage - IJM.CORE">
+<Layout title="Cyber Shinobi Architect - IJM.CORE">
     <Navbar />
     
     <MusicPlayer />
@@ -16,42 +16,38 @@ import MusicPlayer from '../components/MusicPlayer.astro';
         
         <Hero />
 
-        <!-- Seksi Observatorium Al-Idrisi -->
-        <section id="observatory" class="py-20 reveal-scroll mt-20 relative z-10 border-t border-amber-500/15">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="text-amber-400 font-mono text-lg font-bold">01.</span>
-                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-tighter drop-shadow-[0_0_10px_rgba(245,158,11,0.3)]">Kartografi Tektonik Al-Idrisi</h2>
-                <div class="h-px bg-gradient-to-r from-amber-500/30 to-transparent grow max-w-sm ml-4 hidden sm:block"></div>
-            </div>
+        <!-- Seksi Divisi Sensorik Aliansi -->
+        <section id="observatory" class="py-24 reveal-scroll mt-16 relative z-10 border-t border-orange-500/20">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-orange-500 font-mono text-lg font-bold">01.</span>
+                        <span class="text-[10px] font-mono text-cyan-400 tracking-[0.2em] uppercase bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-500/30">
+                            RADAR_SENSORIK
+                        </span>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-bold text-white tracking-tighter drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]">
+                        Deteksi Chakra Global
+                    </h2>
+                </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                
-                <div class="lg:col-span-1 flex flex-col gap-6">
-                    <div class="bg-[#080d1a]/80 border border-amber-500/20 p-6 xl:p-8 rounded-2xl backdrop-blur-md h-full flex flex-col justify-between shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-                        <div>
-                            <div class="text-[9px] font-mono text-teal-300 tracking-[0.2em] mb-4 flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-ping"></span>
-                                TELEMETRI_GLOBAL_AKTIF
-                            </div>
-                            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Integrasi API Seismik</h3>
-                            <p class="text-xs md:text-sm text-zinc-300 font-light leading-relaxed mb-6">
-                                Menggabungkan semangat pemetaan presisi kuno dengan teknologi modern. Skrip ini menarik data seismik USGS secara langsung, memproses persamaan koordinat, dan merendernya ke peta geometri interaktif.
-                            </p>
-                        </div>
-                        
-                        <div class="font-mono text-[10px] md:text-xs text-zinc-400 bg-[#060913] p-3.5 md:p-4 rounded-xl border border-amber-500/20 overflow-x-auto shadow-inner">
-                            <span class="text-amber-400">fetch</span>('https://earthquake.../geojson')<br/>
-                            &nbsp;&nbsp;.then(res => res.<span class="text-teal-400">json</span>())<br/>
-                            &nbsp;&nbsp;.then(data => renderAlIdrisiMap(data));
-                        </div>
+                <div class="lg:col-span-7 bg-[#0d0d12]/60 backdrop-blur-md p-6 rounded-2xl border border-orange-500/20 flex flex-col sm:flex-row gap-6 items-center justify-between shadow-lg">
+                    <p class="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+                        Sistem radar sensorik memantau lonjakan energi (gempa) di seluruh dunia secara <span class="text-orange-400 font-medium">real-time</span>. Data mentah USGS diubah menjadi titik fokus chakra visual.
+                    </p>
+                    <div class="font-mono text-[10px] text-zinc-400 bg-[#08080c] p-3 rounded-xl border border-orange-500/20 shrink-0 w-full sm:w-auto text-center sm:text-left shadow-inner">
+                        <span class="text-orange-400">fetch</span>('.../geojson')<br/>
+                        &nbsp;.then(res => res.<span class="text-cyan-400">json</span>())
                     </div>
                 </div>
-
-                <div class="lg:col-span-2 relative">
-                    <EarthquakeProject />
-                </div>
-
             </div>
+
+            <!-- Map Meja Komando Full-Width -->
+            <div class="w-full h-[450px] lg:h-[550px] rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(249,115,22,0.1)] border border-orange-500/30 relative">
+                <EarthquakeProject />
+            </div>
+
         </section>
 
     </main>

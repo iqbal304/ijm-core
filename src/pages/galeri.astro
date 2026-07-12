@@ -4,43 +4,66 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Arsip Bayt al-Hikmah | IJM.CORE">
+<Layout title="Gulungan Rahasia | IJM.CORE">
     <Navbar />
 
-    <main class="max-w-7xl mx-auto px-6 pt-24 pb-20 min-h-screen">
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-24 min-h-screen">
         
         <div class="mb-16 reveal-scroll">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tighter mb-4 text-glow-amber">
-                BAYT_AL_HIKMAH.
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-950/50 border border-orange-500/30 text-orange-400 font-mono text-xs mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                GULUNGAN RAHASIA // IJM.CORE
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tighter mb-4 text-glow-orange">
+                ARSIP_SHINOBI.
             </h1>
-            <p class="text-zinc-300 font-mono text-sm border-l-2 border-amber-500 pl-4">
-                > Rumah Kebijaksanaan: Arsip kode, filosofi geometri, dan mahakarya digital.
+            <p class="text-zinc-300 font-mono text-sm border-l-2 border-orange-500 pl-4 max-w-2xl">
+                > Kumpulan skrip rahasia, struktur arsitektur, dan jejak misi yang tersimpan dalam bayangan.
             </p>
         </div>
 
-        <div class="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6 reveal-scroll">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 reveal-scroll">
             
-            <div class="relative group rounded-2xl overflow-hidden border border-amber-500/20 bg-[#080d1a]/60 break-inside-avoid shadow-lg">
-                <div class="absolute inset-0 bg-gradient-to-t from-amber-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-500"></div>
-                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-full h-auto grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
-                <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-[#060913] via-[#060913]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                    <p class="font-mono text-[10px] text-amber-400 tracking-widest">KITAB_001</p>
-                    <p class="text-white text-sm font-medium">Arsitek Algoritma</p>
+            <!-- KIRI (7 Kolom): Foto Utama -->
+            <div class="lg:col-span-7 relative group rounded-3xl overflow-hidden border border-orange-500/30 bg-[#0d0d12] min-h-[450px] sm:min-h-[550px] flex flex-col justify-end p-8 shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#08080c] via-[#08080c]/30 to-transparent z-10"></div>
+                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+                
+                <div class="relative z-20 max-w-xl">
+                    <span class="px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-300 font-mono text-[10px] uppercase tracking-widest mb-3 inline-block backdrop-blur-md">
+                        KONTRAK_001 // LEAD ARCHITECT
+                    </span>
+                    <h3 class="text-2xl sm:text-4xl font-bold text-white mb-2">Iqbal Jabar Marjan</h3>
+                    <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                        Merancang sistem dengan ketajaman seorang Shinobi: presisi di Backend, memukau dan tanpa jejak lag di Frontend.
+                    </p>
                 </div>
             </div>
 
-            <div class="relative group rounded-2xl overflow-hidden border border-amber-500/30 bg-[#080d1a] p-8 flex flex-col items-center justify-center min-h-75 break-inside-avoid hover:border-teal-400/60 transition-colors shadow-[inset_0_0_20px_rgba(245,158,11,0.05)]">
-                <div class="w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mb-6 text-amber-400 font-serif">"</div>
-                <p class="font-serif italic text-lg md:text-xl text-zinc-200 text-center leading-relaxed">
-                    "Semua kerumitan dalam dunia komputasi modern berakar dari kesederhanaan <span class="text-amber-400 font-semibold">Aljabar</span> dan keharmonisan <span class="text-teal-400 font-semibold">Geometri</span>."
-                </p>
-                <span class="text-[9px] font-mono text-zinc-500 tracking-widest uppercase mt-6">— Filosofi Warisan Algoritma</span>
-            </div>
+            <!-- KANAN (5 Kolom): 2 Kartu Berjajar Vertikal -->
+            <div class="lg:col-span-5 flex flex-col gap-8 justify-between">
+                
+                <!-- Kartu Atas: Filosofi Shinobi -->
+                <div class="relative group rounded-3xl overflow-hidden border border-orange-500/30 bg-[#0d0d12]/80 backdrop-blur-xl p-8 flex flex-col justify-center grow hover:border-cyan-400/60 transition-colors shadow-lg">
+                    <div class="w-8 h-8 rounded-full bg-orange-500/10 border border-orange-500/30 flex items-center justify-center mb-6 text-orange-400 font-serif text-lg">"</div>
+                    <p class="font-serif italic text-lg text-zinc-200 leading-relaxed mb-6">
+                        "Sebagus apapun <span class="text-cyan-400 font-semibold not-italic">jurus visual</span> yang kau pamerkan, seorang *engineer* sejati dinilai dari presisi kecepatan dan <span class="text-orange-500 font-semibold not-italic">struktur rahasia</span> di balik bayangan."
+                    </p>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-4 text-[10px] font-mono text-zinc-500">
+                        <span>KODE ETIK SHINOBI</span>
+                        <span class="text-orange-400">>_ IJM.CORE</span>
+                    </div>
+                </div>
 
-            <div class="relative group rounded-2xl overflow-hidden border border-amber-500/15 bg-[#080d1a]/40 break-inside-avoid min-h-62.5 flex flex-col items-center justify-center p-6 border-dashed hover:border-amber-500/40 transition-all">
-                <div class="w-3 h-3 bg-teal-400/40 rounded-full animate-ping mb-3"></div>
-                <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest text-center">Menunggu Transmisi Kitab Baru...</p>
-                <span class="text-[8px] font-mono text-zinc-600 mt-1">[SLOT_ARSIP_TERSEDIA]</span>
+                <!-- Kartu Bawah: Slot Misi -->
+                <div class="relative group rounded-3xl overflow-hidden border border-orange-500/20 bg-[#0d0d12]/40 p-8 border-dashed hover:border-orange-500/50 transition-all flex flex-col items-center justify-center text-center h-48">
+                    <div class="w-3 h-3 bg-cyan-400/60 rounded-full animate-ping mb-3"></div>
+                    <p class="text-zinc-300 font-mono text-xs uppercase tracking-widest font-semibold mb-1">
+                        Menunggu Misi S-Rank Berikutnya...
+                    </p>
+                    <span class="text-[9px] font-mono text-zinc-500">[SLOT_GULUNGAN_TERSEDIA]</span>
+                </div>
+
             </div>
 
         </div>
