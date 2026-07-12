@@ -9,7 +9,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -22,70 +22,74 @@ const { title } = Astro.props;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-orange-500/30 relative overflow-x-hidden">
+<body class="antialiased selection:bg-emerald-500/30 relative overflow-x-hidden">
     
-    <!-- ENGINE PARTIKEL CHAKRA EMBERS -->
-    <canvas id="chakra-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-70"></canvas>
+    <!-- ENGINE PARTIKEL DATA STREAM / NETWORK PACKETS -->
+    <canvas id="terminal-canvas" class="fixed inset-0 w-full h-full pointer-events-none -z-30 opacity-60"></canvas>
     
-    <!-- Ambient Glow (Chakra Crimson & Electric Cyan) -->
-    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-orange-600/15 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
+    <!-- Ambient Glow (Terminal Emerald & Cyber Cyan) -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-emerald-600/10 blur-[150px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
     <div class="fixed bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-cyan-600/10 blur-[130px] rounded-full pointer-events-none -z-20 mix-blend-screen"></div>
 
-    <!-- KURSOR SHURIKEN TARGET -->
-    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 bg-orange-500 rounded-full pointer-events-none z-[9999] shadow-[0_0_12px_#f97316]"></div>
+    <!-- KURSOR CROSSHAIR TERMINAL (SQUARE) -->
+    <div id="cursor-dot" class="fixed top-0 left-0 w-2 h-2 bg-emerald-400 pointer-events-none z-[9999] shadow-[0_0_10px_#10b981]"></div>
     
-    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-cyan-400/50 rounded-full pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen rotate-45">
-        <div class="absolute w-2 h-2 border border-orange-500/60 animate-ping"></div>
+    <div id="cursor-ring" class="fixed top-0 left-0 w-8 h-8 border border-cyan-400/60 pointer-events-none z-[9998] flex items-center justify-center mix-blend-screen">
+        <div class="absolute w-2 h-2 border border-emerald-400/60 animate-ping"></div>
+        <!-- Sudut pembidik crosshair -->
+        <div class="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-emerald-400"></div>
+        <div class="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-emerald-400"></div>
+        <div class="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-emerald-400"></div>
+        <div class="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-emerald-400"></div>
     </div>
 
     <slot />
     
     <script is:inline>
-        // SCRIPT KANVAS: CHAKRA EMBERS
-        const canvas = document.getElementById('chakra-canvas');
+        // SCRIPT KANVAS: NETWORK DATA PACKETS (TICKER STYLE)
+        const canvas = document.getElementById('terminal-canvas');
         const ctx = canvas.getContext('2d');
-        let width, height, motes = [];
+        let width, height, packets = [];
 
-        function initMotes() {
+        function initPackets() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            motes = [];
-            for (let i = 0; i < 75; i++) {
-                motes.push({
-                    x: Math.random() * width,
+            packets = [];
+            for (let i = 0; i < 65; i++) {
+                packets.push({
+                    x: Math.floor(Math.random() * (width / 20)) * 20, // Grid snap
                     y: Math.random() * height,
-                    size: Math.random() * 2.5 + 0.5,
-                    speedY: Math.random() * 0.8 + 0.3,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random() * 0.7 + 0.2,
-                    color: Math.random() > 0.4 ? '#f97316' : (Math.random() > 0.3 ? '#22d3ee' : '#ef4444')
+                    sizeW: Math.random() > 0.5 ? 2 : 12,
+                    sizeH: Math.random() > 0.5 ? 12 : 2,
+                    speedY: Math.random() * 1.5 + 0.5,
+                    opacity: Math.random() * 0.6 + 0.2,
+                    color: Math.random() > 0.3 ? '#10b981' : (Math.random() > 0.5 ? '#06b6d4' : '#3b82f6')
                 });
             }
         }
 
-        function animateMotes() {
+        function animatePackets() {
             ctx.clearRect(0, 0, width, height);
-            for (let m of motes) {
-                m.y -= m.speedY;
-                m.x += m.speedX;
-                if (m.y < 0) { m.y = height; m.x = Math.random() * width; }
-                if (m.x < 0) m.x = width;
-                if (m.x > width) m.x = 0;
+            for (let p of packets) {
+                p.y -= p.speedY;
+                if (p.y < 0) { 
+                    p.y = height; 
+                    p.x = Math.floor(Math.random() * (width / 20)) * 20; 
+                }
 
                 ctx.beginPath();
-                ctx.fillStyle = m.color;
-                ctx.globalAlpha = m.opacity;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = m.color;
-                ctx.arc(m.x, m.y, m.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.opacity;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = p.color;
+                ctx.fillRect(p.x, p.y, p.sizeW, p.sizeH);
             }
-            requestAnimationFrame(animateMotes);
+            requestAnimationFrame(animatePackets);
         }
 
-        window.addEventListener('resize', initMotes);
-        initMotes();
-        animateMotes();
+        window.addEventListener('resize', initPackets);
+        initPackets();
+        animatePackets();
         
         if (typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
@@ -95,23 +99,23 @@ const { title } = Astro.props;
 
             window.addEventListener('mousemove', (e) => {
                 gsap.to(dot, { x: e.clientX - 4, y: e.clientY - 4, duration: 0 });
-                gsap.to(ring, { x: e.clientX - 16, y: e.clientY - 16, duration: 0.15, ease: "power2.out" });
+                gsap.to(ring, { x: e.clientX - 16, y: e.clientY - 16, duration: 0.1, ease: "power2.out" });
             });
 
-            // Gunakan file hover.mp3 yang sama (efek suara swish/katana jika ada)
+            // Suara klik/hover terminal (gunakan hover.mp3 atau terminal beep)
             const hoverSound = new Howl({ src: ['/hover.mp3'], volume: 0.15 });
 
             const addHoverEffect = () => {
-                const clickables = document.querySelectorAll('a, button, #chakra-core, .group');
+                const clickables = document.querySelectorAll('a, button, #cloud-node, .group');
                 clickables.forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         if(hoverSound.state() === 'loaded') hoverSound.play(); 
-                        gsap.to(ring, { scale: 1.5, borderColor: '#f97316', rotation: 90, duration: 0.2 });
-                        gsap.to(dot, { scale: 1.8, backgroundColor: '#22d3ee', duration: 0.2 });
+                        gsap.to(ring, { scale: 1.4, borderColor: '#10b981', rotation: 90, duration: 0.15 });
+                        gsap.to(dot, { scale: 1.5, backgroundColor: '#06b6d4', duration: 0.15 });
                     });
                     el.addEventListener('mouseleave', () => {
-                        gsap.to(ring, { scale: 1, borderColor: 'rgba(34, 211, 238, 0.5)', rotation: 45, duration: 0.2 });
-                        gsap.to(dot, { scale: 1, backgroundColor: '#f97316', duration: 0.2 });
+                        gsap.to(ring, { scale: 1, borderColor: 'rgba(6, 182, 212, 0.6)', rotation: 0, duration: 0.15 });
+                        gsap.to(dot, { scale: 1, backgroundColor: '#10b981', duration: 0.15 });
                     });
                 });
             };

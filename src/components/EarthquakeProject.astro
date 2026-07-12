@@ -1,17 +1,17 @@
 ---
 ---
-<div class="bg-[#0d0d12]/80 border border-orange-500/20 p-3.5 rounded-2xl backdrop-blur-md relative overflow-hidden group w-full h-full flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.6)] hover:border-cyan-400/40 transition-colors duration-500">
+<div class="bg-[#080d1a]/80 border border-emerald-500/20 p-3.5 rounded-2xl backdrop-blur-md relative overflow-hidden group w-full h-full flex flex-col shadow-[0_0_30px_rgba(0,0,0,0.6)] hover:border-cyan-400/40 transition-colors duration-500">
     
-    <!-- HUD Overlay Divisi Sensorik -->
-    <div class="absolute top-6 right-6 z-40 bg-[#08080c]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-orange-500/30 text-[9px] font-mono text-orange-400 shadow-lg flex items-center gap-2">
-        <span class="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
-        DIVISI_SENSORIK: ACTIVE
+    <!-- HUD Overlay Global Telemetry -->
+    <div class="absolute top-6 right-6 z-40 bg-[#030508]/90 backdrop-blur-md px-3 py-1.5 rounded border border-emerald-500/30 text-[9px] font-mono text-emerald-400 shadow-lg flex items-center gap-2">
+        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+        GLOBAL_TELEMETRY: ACTIVE
     </div>
     
-    <!-- Canvas Jaringan Chakra -->
+    <!-- Canvas Jaringan Data Pipeline -->
     <canvas id="network-canvas" class="absolute inset-0 w-full h-full opacity-35 pointer-events-none z-0"></canvas>
 
-    <div id="earthquake-map" class="w-full h-70 lg:h-95 rounded-xl bg-[#08080c] z-10 grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 grow border border-orange-500/15"></div>
+    <div id="earthquake-map" class="w-full h-70 lg:h-95 rounded-xl bg-[#030508] z-10 grayscale-[30%] group-hover:grayscale-0 transition-all duration-1000 grow border border-emerald-500/15"></div>
 </div>
 
 <script>
@@ -39,7 +39,7 @@
     function drawNetwork() {
         if (!ctx || !canvas) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'rgba(34, 211, 238, 0.25)'; /* Electric Cyan Line */
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.25)'; /* Cyber Cyan Line */
         ctx.lineWidth = 1;
 
         particles.forEach((p, i) => {
@@ -49,7 +49,7 @@
 
             ctx.beginPath();
             ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-            ctx.fillStyle = '#f97316'; /* Orange Chakra Dot */
+            ctx.fillStyle = '#10b981'; /* Emerald Dot */
             ctx.fill();
 
             for (let j = i + 1; j < particles.length; j++) {
@@ -83,8 +83,8 @@
                         const coords = [q.geometry.coordinates[1], q.geometry.coordinates[0]];
                         L.circle(coords as [number, number], {
                             radius: q.properties.mag * 20000, 
-                            color: '#f97316', /* Chakra Crimson Border */
-                            fillColor: '#ef4444', /* Red Fill */
+                            color: '#10b981', /* Terminal Green Border */
+                            fillColor: '#06b6d4', /* Cyan Fill */
                             fillOpacity: 0.45, 
                             weight: 1.5
                         }).addTo(map);
