@@ -14,26 +14,29 @@
         </h1>
     </div>
 
-    <!-- TIER 2: L-Shape Layout (Teks & Terminal Eksekusi di Bawah, Server Node di Kanan) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-12 relative z-30">
+    <!-- TIER 2: L-Shape Layout (Diubah ke items-stretch agar tinggi kartu proporsional & stabil) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mt-12 relative z-30">
         
-        <!-- KIRI: Kartu Filosofi HFT -->
-        <div class="hero-item lg:col-span-5 bg-[#080d1a]/70 backdrop-blur-md p-8 rounded-2xl border border-emerald-500/20 shadow-xl hover:border-cyan-400/40 transition-all duration-500 group">
-            <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-12 h-12 rounded object-cover border border-emerald-500/50 group-hover:scale-105 transition-transform" />
+        <!-- KIRI: Kartu Filosofi HFT (Diperkuat border, shadow, dan z-index agar anti-hilang) -->
+        <div class="hero-item lg:col-span-5 bg-[#080d1a]/90 backdrop-blur-xl p-8 rounded-2xl border border-emerald-500/40 shadow-[0_0_30px_rgba(16,185,129,0.15)] hover:border-cyan-400/60 transition-all duration-500 group relative z-40 flex flex-col justify-center">
+            <div class="flex items-center gap-4 mb-6 border-b border-white/10 pb-4">
+                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-14 h-14 rounded-xl object-cover border-2 border-emerald-500/60 group-hover:scale-105 transition-transform shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
                 <div>
-                    <h3 class="text-white font-bold text-sm">Iqbal Jabar Marjan</h3>
-                    <p class="text-[10px] font-mono text-cyan-400 tracking-widest">FULLSTACK & CLOUD ENGINEER</p>
+                    <h3 class="text-white font-bold text-base flex items-center gap-2">
+                        Iqbal Jabar Marjan
+                        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-ping" title="System Online"></span>
+                    </h3>
+                    <p class="text-[10px] font-mono text-cyan-400 tracking-widest uppercase mt-0.5">FULLSTACK & CLOUD ENGINEER</p>
                 </div>
             </div>
             
-            <h2 class="text-base sm:text-lg font-light text-zinc-300 leading-relaxed font-sans">
+            <h2 class="text-base sm:text-lg font-light text-zinc-200 leading-relaxed font-sans">
                 "<span class="font-bold text-white">Backend</span> adalah <span class="font-semibold text-emerald-400 text-glow-green">High-Frequency Pipeline</span> yang memproses data tanpa henti. <span class="font-bold text-white">Frontend</span> adalah <span class="text-cyan-400 font-semibold text-glow-cyan">Terminal Analitik</span> dengan eksekusi visual presisi nol-latensi."
             </h2>
         </div>
 
         <!-- TENGAH: Terminal Eksekusi Log (Telemetry HUD Anti-Bug) -->
-        <div class="hero-item lg:col-span-4 bg-[#080d1a]/80 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(16,185,129,0.1)] relative overflow-hidden group hover:border-cyan-400/50 transition-colors duration-500">
+        <div class="hero-item lg:col-span-4 bg-[#080d1a]/80 backdrop-blur-xl border border-emerald-500/30 rounded-2xl p-6 shadow-[0_0_30px_rgba(16,185,129,0.1)] relative overflow-hidden group hover:border-cyan-400/50 transition-colors duration-500 flex flex-col justify-center">
             <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
             <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
@@ -67,7 +70,7 @@
             </div>
         </div>
 
-        <!-- KANAN: Global Cloud Node (Melayang di Kanan) -->
+        <!-- KANAN: Global Cloud Node -->
         <div class="hero-item lg:col-span-3 flex justify-center items-center relative py-8 lg:py-0 lg:absolute lg:right-4 lg:top-1/4 pointer-events-auto">
             
             <!-- Cincin Server Racks -->
@@ -100,6 +103,8 @@
 <script is:inline>
     (function initHeroSection() {
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. SCRAMBLE TEXT EFFECT
             const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$&*+~";
             const scrambleElements = document.querySelectorAll('.scramble-text');
             scrambleElements.forEach(el => {
@@ -116,6 +121,7 @@
                 }, 30);
             });
 
+            // 2. CLOUD NODE HOVER EFFECT
             const heroSection = document.getElementById('hero-section');
             const cloudNode = document.getElementById('cloud-node');
             if(heroSection && cloudNode && typeof window.gsap !== 'undefined') {
@@ -129,6 +135,19 @@
                     window.gsap.to(cloudNode, { x: 0, y: 0, rotation: 45, duration: 1.5, ease: "elastic.out(1, 0.3)" });
                 });
             }
+
+            // 3. FAIL-SAFE (PENGAMAN ANTI-HILANG):
+            // Memaksa semua kartu (.hero-item) wajib muncul (opacity 1) jika dalam 1.5 detik GSAP gagal memunculkannya.
+            setTimeout(() => {
+                document.querySelectorAll('.hero-item').forEach(el => {
+                    if (window.getComputedStyle(el).opacity === '0') {
+                        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            }, 1500);
+
         });
     })();
 </script>
