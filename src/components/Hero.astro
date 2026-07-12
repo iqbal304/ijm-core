@@ -1,63 +1,72 @@
 ---
 ---
-<section id="hero-section" class="min-h-[90vh] relative z-20 pt-32 pb-16 flex flex-col justify-between">
+<section id="hero-section" class="min-h-screen flex flex-col xl:flex-row items-center justify-between relative z-20 pt-24 pb-10">
     
-    <!-- TIER 1 (ATAS): Badge & Nama Megah (Cinematic Typography) -->
-    <div class="w-full relative z-30">
-        <div class="hero-item inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#0a1118]/80 border border-emerald-500/30 text-emerald-400 font-mono text-xs mb-6 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            >_ ARSITEK ISTANA LANGIT // IJM.CORE
-        </div>
+    <!-- BAGIAN KIRI: Teks & Prasasti Penjaga -->
+    <div class="w-full xl:w-1/2 flex flex-col justify-center text-left relative z-30">
         
-        <h1 class="hero-item scramble-text text-6xl sm:text-8xl lg:text-9xl font-extrabold text-white tracking-tighter leading-[0.85] mb-4 text-glow-cyan drop-shadow-2xl max-w-5xl" data-target="Iqbal Marjan">
-            Iqbal Marjan
-        </h1>
-    </div>
+        <!-- Profile Badge -->
+        <div class="hero-item mb-8 relative group w-max">
+            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-1000 group-hover:duration-200"></div>
+            
+            <div class="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-cyan-400 z-20 transition-all group-hover:-top-2 group-hover:-left-2"></div>
+            <div class="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-emerald-400 z-20 transition-all group-hover:-top-2 group-hover:-right-2"></div>
+            <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-cyan-400 z-20 transition-all group-hover:-bottom-2 group-hover:-left-2"></div>
+            <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-emerald-400 z-20 transition-all group-hover:-bottom-2 group-hover:-right-2"></div>
 
-    <!-- TIER 2 (TENGAH & BAWAH): L-Shape Layout (Teks & Prasasti di Bawah, Kristal di Kanan) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-12 relative z-30">
-        
-        <!-- KIRI: Kartu Filosofi Laputa (Spans 5 Kolom) -->
-        <div class="hero-item lg:col-span-5 bg-[#0a1118]/70 backdrop-blur-md p-8 rounded-3xl border border-emerald-500/20 shadow-xl hover:border-cyan-400/40 transition-all duration-500 group">
-            <div class="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500/40 group-hover:scale-105 transition-transform" />
-                <div>
-                    <h3 class="text-white font-bold text-sm">Iqbal Jabar Marjan</h3>
-                    <p class="text-[10px] font-mono text-cyan-400 tracking-widest">LEAD FRONTEND & BACKEND</p>
+            <div class="relative flex items-center gap-4 bg-[#070b12] border border-emerald-500/20 p-2 rounded-2xl z-10">
+                <img src="/foto-iqbal.jpg" alt="Iqbal Jabar" class="w-16 h-16 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500 border border-emerald-500/30" />
+                <div class="pr-4">
+                    <h3 class="text-white font-bold text-sm flex items-center gap-2">
+                        Iqbal Jabar Marjan
+                        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-ping" title="Aether Levitation Active"></span>
+                    </h3>
+                    <p class="text-[10px] font-mono text-emerald-400 tracking-widest uppercase">ARSITEK ISTANA LANGIT</p>
                 </div>
             </div>
-            
-            <h2 class="text-base sm:text-lg font-light text-zinc-300 leading-relaxed font-serif italic">
-                "<span class="font-bold text-white not-italic">Backend</span> adalah <span class="font-semibold text-cyan-400 not-italic text-glow-cyan">Batu Levitas</span> yang menopang sistem. <span class="font-bold text-white not-italic">Frontend</span> adalah <span class="text-emerald-400 font-semibold not-italic text-glow-emerald">Ekosistem Alam</span> yang bersemi di atasnya."
-            </h2>
         </div>
-
-        <!-- TENGAH: Prasasti Penjaga Log (Spans 4 Kolom) -->
-        <div class="hero-item lg:col-span-4 bg-[#0a1118]/80 backdrop-blur-xl border border-emerald-500/30 rounded-3xl p-6 shadow-[0_0_30px_rgba(16,185,129,0.08)] relative overflow-hidden group hover:border-cyan-500/50 transition-colors duration-500">
+        
+        <!-- Main Heading -->
+        <h1 class="hero-item scramble-text text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white mb-6 tracking-tighter leading-[0.9] text-glow-cyan drop-shadow-2xl" data-target="Iqbal Marjan">
+            Iqbal Marjan
+        </h1>
+        
+        <!-- Subheading Filosofis Laputa -->
+        <h2 class="hero-item text-lg sm:text-2xl font-light text-zinc-300 mb-8 leading-relaxed border-l-2 border-emerald-500/40 pl-6">
+            <span class="font-bold text-white">Backend</span> adalah <span class="font-semibold text-cyan-400 text-glow-cyan">Batu Levitas</span> yang menopang sistem.<br/>
+            <span class="font-bold text-white">Frontend</span> adalah <span class="italic text-emerald-400 text-glow-emerald">Ekosistem Alam</span> yang bersemi di atasnya.
+        </h2>
+        
+        <!-- Prasasti Penjaga (Guardian Log - Anti Bug) -->
+        <div class="hero-item relative w-full max-w-lg mt-4 bg-[#0a1118]/60 backdrop-blur-xl border border-emerald-500/20 rounded-xl p-5 shadow-[0_0_30px_rgba(16,185,129,0.08)] overflow-hidden group hover:border-cyan-500/40 transition-colors duration-500">
+            
             <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
             <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-                <span class="text-[10px] font-mono text-cyan-400 tracking-[0.2em] uppercase flex items-center gap-2 font-bold">
+                <span class="text-[10px] font-mono text-cyan-400 tracking-[0.2em] uppercase flex items-center gap-2">
                     <span class="inline-block w-2 h-2 rotate-45 bg-amber-400 animate-pulse"></span>
                     Prasasti_Penjaga.log
                 </span>
-                <span class="text-[9px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 animate-pulse">
+                <div class="flex items-center gap-2 text-[9px] font-mono text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-500/30">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     700 TAHUN AKTIF
-                </span>
+                </div>
             </div>
 
-            <div class="space-y-3 font-mono text-xs text-zinc-400">
-                <div class="flex justify-between items-center bg-black/40 p-2.5 rounded-xl border border-white/5">
-                    <span class="text-[10px] text-zinc-500">INTI_LEVITAS:</span>
-                    <span class="text-white font-bold">Aether Core v4 <span class="text-cyan-400 text-[10px] ml-1">[STABIL]</span></span>
+            <div class="grid grid-cols-2 gap-5 font-mono text-xs text-zinc-400">
+                <div class="flex flex-col gap-1.5">
+                    <span class="text-[9px] text-zinc-500 tracking-widest">INTI_LEVITAS</span>
+                    <span class="text-white font-bold flex items-center gap-1.5">
+                        Aether Core v4 <span class="text-cyan-400 text-[10px]">[STABIL]</span>
+                    </span>
                 </div>
-                <div class="flex justify-between items-center bg-black/40 p-2.5 rounded-xl border border-white/5">
-                    <span class="text-[10px] text-zinc-500">TECH_STACK:</span>
-                    <span class="text-white font-bold text-glow-amber">Astro / Tailwind / Node</span>
+                <div class="flex flex-col gap-1.5">
+                    <span class="text-[9px] text-zinc-500 tracking-widest">STRUKTUR_BATU</span>
+                    <span class="text-white font-bold text-glow-amber">Astro / Tailwind</span>
                 </div>
-                <div class="pt-1">
-                    <div class="flex justify-between text-[9px] tracking-widest mb-1">
-                        <span>SINKRONISASI ALAM & LOGIKA</span>
+                <div class="flex flex-col gap-2 col-span-2 mt-1">
+                    <div class="flex justify-between text-[9px] tracking-widest">
+                        <span>SINKRONISASI_ALAM & LOGIKA</span>
                         <span class="text-emerald-400">100% HARMONI</span>
                     </div>
                     <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
@@ -67,31 +76,33 @@
             </div>
         </div>
 
-        <!-- KANAN: Kristal Levitas (Spans 3 Kolom - Posisi Melayang di Pojok Kanan Atas/Tengah) -->
-        <div class="hero-item lg:col-span-3 flex justify-center items-center relative py-8 lg:py-0 lg:absolute lg:right-4 lg:top-1/4 pointer-events-auto">
-            
-            <!-- Cincin Prasasti Luar -->
-            <div class="absolute w-[260px] h-[260px] sm:w-[350px] sm:h-[350px] rounded-full border border-emerald-500/20 animate-[spin_35s_linear_infinite_reverse] flex items-center justify-center pointer-events-none">
-                <div class="absolute -top-3 bg-[#070b12] border border-cyan-500/50 text-cyan-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(6,182,212,0.3)]">VOLUSPA_LOGIC</div>
-                <div class="absolute -bottom-3 bg-[#070b12] border border-emerald-500/50 text-emerald-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(16,185,129,0.3)]">NATURE_UI</div>
+    </div>
+
+    <!-- BAGIAN KANAN: Visual Kristal Levitas (The Core) -->
+    <div class="w-full xl:w-1/2 flex justify-center items-center mt-20 xl:mt-0 relative hero-item min-h-[300px] lg:min-h-[500px]">
+        
+        <!-- Cincin Prasasti Luar (Ancient Runes) -->
+        <div class="absolute w-[300px] h-[300px] sm:w-[460px] sm:h-[460px] rounded-full border border-emerald-500/20 animate-[spin_35s_linear_infinite_reverse] flex items-center justify-center pointer-events-none">
+            <div class="absolute -top-3 bg-[#070b12] border border-cyan-500/50 text-cyan-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(6,182,212,0.3)]">VOLUSPA_LOGIC</div>
+            <div class="absolute -bottom-3 bg-[#070b12] border border-emerald-500/50 text-emerald-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(16,185,129,0.3)]">NATURE_UI</div>
+            <div class="absolute -left-3 bg-[#070b12] border border-amber-500/50 text-amber-300 text-[9px] px-3 py-1 rounded-full font-mono shadow-[0_0_10px_rgba(245,158,11,0.3)]">LEVITATION_STONE</div>
+        </div>
+
+        <!-- Cincin Ukiran Tengah -->
+        <div class="absolute w-[220px] h-[220px] sm:w-[340px] sm:h-[340px] rounded-full border border-cyan-500/30 animate-[spin_20s_linear_infinite] flex items-center justify-center">
+            <span class="absolute -top-3 text-[10px] sm:text-xs font-mono text-emerald-400 tracking-widest bg-[#070b12] px-3 border border-emerald-500/40 rounded-full">TENKU NO SHIRO</span>
+        </div>
+
+        <!-- Cincin Energi Emas -->
+        <div class="absolute w-[170px] h-[170px] sm:w-[260px] sm:h-[260px] rounded-full border-2 border-t-cyan-400 border-r-emerald-400 border-b-transparent border-l-amber-400 animate-[spin_12s_linear_infinite_reverse] blur-[2px]"></div>
+
+        <!-- Inti Kristal Levitas (Levitation Stone Core) -->
+        <div id="crystal-core" class="relative w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] rounded-2xl rotate-45 bg-gradient-to-br from-cyan-500 via-emerald-600 to-amber-500 p-[2px] shadow-[0_0_60px_20px_rgba(6,182,212,0.3),inset_0_0_30px_rgba(255,255,255,0.5)] z-10 flex items-center justify-center overflow-hidden cursor-crosshair animate-float">
+            <div class="absolute inset-0 bg-[#070b12]/90 backdrop-blur-sm flex items-center justify-center">
+                <!-- Glowing Core Center -->
+                <div class="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 animate-pulse blur-md opacity-80"></div>
+                <span class="font-mono text-[10px] text-cyan-200 tracking-[0.3em] z-20 -rotate-45 font-bold drop-shadow-[0_0_8px_#06b6d4]">LAPUTA</span>
             </div>
-
-            <!-- Cincin Ukiran Tengah -->
-            <div class="absolute w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] rounded-full border border-cyan-500/30 animate-[spin_20s_linear_infinite] flex items-center justify-center">
-                <span class="absolute -top-3 text-[9px] font-mono text-emerald-400 tracking-widest bg-[#070b12] px-3 border border-emerald-500/40 rounded-full">TENKU NO SHIRO</span>
-            </div>
-
-            <!-- Cincin Energi Emas -->
-            <div class="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] rounded-full border-2 border-t-cyan-400 border-r-emerald-400 border-b-transparent border-l-amber-400 animate-[spin_12s_linear_infinite_reverse] blur-[1px]"></div>
-
-            <!-- Inti Kristal Levitas -->
-            <div id="crystal-core" class="relative w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] rounded-2xl rotate-45 bg-gradient-to-br from-cyan-500 via-emerald-600 to-amber-500 p-[2px] shadow-[0_0_50px_15px_rgba(6,182,212,0.3),inset_0_0_20px_rgba(255,255,255,0.5)] z-10 flex items-center justify-center overflow-hidden cursor-crosshair animate-float">
-                <div class="absolute inset-0 bg-[#070b12]/90 backdrop-blur-sm flex items-center justify-center">
-                    <div class="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-300 animate-pulse blur-md opacity-80"></div>
-                    <span class="font-mono text-[10px] text-cyan-200 tracking-[0.3em] z-20 -rotate-45 font-bold drop-shadow-[0_0_8px_#06b6d4]">LAPUTA</span>
-                </div>
-            </div>
-
         </div>
 
     </div>
@@ -100,11 +111,14 @@
 <script is:inline>
     (function initHeroSection() {
         document.addEventListener("DOMContentLoaded", () => {
+            
             const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+~";
             const scrambleElements = document.querySelectorAll('.scramble-text');
+            
             scrambleElements.forEach(el => {
                 const target = el.getAttribute('data-target');
                 if (!target) return; 
+                
                 let iteration = 0;
                 const interval = setInterval(() => {
                     el.innerText = target.split("").map((letter, index) => {
@@ -118,6 +132,7 @@
 
             const heroSection = document.getElementById('hero-section');
             const crystalCore = document.getElementById('crystal-core');
+
             if(heroSection && crystalCore && typeof window.gsap !== 'undefined') {
                 heroSection.addEventListener('mousemove', (e) => {
                     const rect = heroSection.getBoundingClientRect();
